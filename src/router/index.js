@@ -16,7 +16,22 @@ const router = new VueRouter({
                 },
                 {
                     path: '/before/data',
-                    component: () => import('../views/DataVc/DataVc.vue')
+                    component: () => import('../views/DataVc/DataVc.vue'),
+                    redirect: '/before/data/realtime',
+                    children: [
+                        {
+                            path: '/before/data/realtime',
+                            component: () => import('../views/DataVc/RealTime/RealTime.vue')
+                        },
+                        {
+                            path: '/before/data/history',
+                            component: () => import('../views/DataVc/HistoryData/HistoryData.vue')
+                        },
+                        {
+                            path: '/before/data/analysis',
+                            component: () => import('../views/DataVc/AnalysisData/AnalysisData.vue')
+                        }
+                    ]
                 },
                 {
                     path: '/before/device',
