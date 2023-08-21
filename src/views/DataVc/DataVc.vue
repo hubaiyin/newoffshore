@@ -91,6 +91,6 @@ export default {
 }
 .data .showWay {
   height: 95%;
-  padding: 0.3%;
+  // padding: 0.3%;
 }
 </style>
