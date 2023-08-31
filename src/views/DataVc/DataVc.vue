@@ -62,7 +62,9 @@ export default {
   display: flex;
   justify-content: space-around;
   margin: 0 auto;
+  background: rgba(0, 0, 0, 0);
 }
+
 .data > .el-radio-group .el-radio-button {
   width: 33.3%;
   height: 100%;
@@ -80,8 +82,8 @@ export default {
   align-items: center;
   justify-content: center;
   padding: 0;
-  border-left: none !important;
   color: #fff;
+  box-shadow: rgb(65, 101, 219) 0px 0px 0px 0px !important;
 }
 .data > .el-radio-group .el-radio-button--medium .el-radio-button__inner {
   box-sizing: border-box;
@@ -94,7 +96,8 @@ export default {
   justify-content: center;
   font-size: large;
   background: rgba(0, 0, 0, 0) !important;
-  border-left: none !important;
+  // border-left: none !important;
+  border: none;
   color: #b7c0d5;
 }
 .data .showWay {
