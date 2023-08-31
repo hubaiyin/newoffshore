@@ -24,10 +24,6 @@
           <router-link to="/before/log">系统日志</router-link>
         </div>
       </div>
-      <div class="middle">
-        <div class="time">2023年11月4日 14:51</div>
-        <div class="login">登录｜注册</div>
-      </div>
       <div class="container">
         <router-view></router-view>
       </div>
@@ -74,22 +70,6 @@ export default {
       height: 60%;
       width: 10%;
       background: skyblue;
-    }
-  }
-  .middle {
-    height: 4%;
-    background: skyblue;
-    display: flex;
-    justify-content: space-between;
-    box-sizing: border-box;
-    padding: 0 2%;
-    align-items: center;
-    .time {
-      height: 100%;
-      width: 15%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
   }
   .container {
