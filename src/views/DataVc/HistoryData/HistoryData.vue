@@ -4,6 +4,9 @@
   <script>
 export default {
   name: "HistoryData",
+  mounted() {
+    console.log(this.$route);
+  },
 };
 </script>
   <style lang="scss" scoped>

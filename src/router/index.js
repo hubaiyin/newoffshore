@@ -18,18 +18,30 @@ const router = new VueRouter({
                     path: '/before/data',
                     component: () => import('../views/DataVc/DataVc.vue'),
                     redirect: '/before/data/realtime',
+                    meta: {
+                        title: '数据监测'
+                    },
                     children: [
                         {
                             path: '/before/data/realtime',
-                            component: () => import('../views/DataVc/RealTime/RealTime.vue')
+                            component: () => import('../views/DataVc/RealTime/RealTime.vue'),
+                            meta: {
+                                title: '实时监测'
+                            }
                         },
                         {
                             path: '/before/data/history',
-                            component: () => import('../views/DataVc/HistoryData/HistoryData.vue')
+                            component: () => import('../views/DataVc/HistoryData/HistoryData.vue'),
+                            meta: {
+                                title: '历史数据'
+                            }
                         },
                         {
                             path: '/before/data/analysis',
-                            component: () => import('../views/DataVc/AnalysisData/AnalysisData.vue')
+                            component: () => import('../views/DataVc/AnalysisData/AnalysisData.vue'),
+                            meta: {
+                                title: '数据分析'
+                            }
                         }
                     ]
                 },

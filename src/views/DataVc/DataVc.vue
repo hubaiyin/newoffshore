@@ -3,17 +3,17 @@
     <el-radio-group v-model="tabPosition" style="width: 100%" size="medium">
       <el-radio-button
         label="/before/data/realtime"
-        @click.native="jump('/before/data/realtime')"
+        @click.native="jump($event, '/before/data/realtime')"
         ><i class="el-icon-view"></i>实时监测</el-radio-button
       >
       <el-radio-button
         label="/before/data/history"
-        @click.native="jump('/before/data/history')"
+        @click.native="jump($event, '/before/data/history')"
         ><i class="el-icon-time"></i>历史数据</el-radio-button
       >
       <el-radio-button
         label="/before/data/analysis"
-        @click.native="jump('/before/data/analysis')"
+        @click.native="jump($event, '/before/data/analysis')"
         ><i class="el-icon-data-analysis"></i>数据分析</el-radio-button
       >
     </el-radio-group>
@@ -32,7 +32,8 @@ export default {
     };
   },
   methods: {
-    jump(path) {
+    jump(e, path) {
+      if (e.target.tagName !== "INPUT") return;
       this.$router.push(path);
     },
   },

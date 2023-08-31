@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <div class="header" ref="header">
+      <bread-crumb :key="updateB"></bread-crumb>
       <div style="width: 50%">
         <el-carousel
           :autoplay="false"
@@ -19,40 +20,59 @@
     <div class="middle">
       <h3>性能参数</h3>
       <div class="right">
-        <div class="op1">
-          安装位置：<el-select v-model="value" placeholder="请选择" size="mini">
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :value="item.value"
+        <div class="op">
+          <div class="op1">
+            <div class="text">安装位置：</div>
+            <el-select v-model="value" placeholder="请选择" size="mini">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select>
+          </div>
+          <div class="op2">
+            数据范围：<el-select
+              v-model="value"
+              placeholder="请选择"
+              size="mini"
             >
-            </el-option>
-          </el-select>
-        </div>
-        <div class="op2">
-          数据范围：<el-select v-model="value" placeholder="请选择" size="mini">
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :value="item.value"
-            >
-            </el-option>
-          </el-select>
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select>
+          </div>
         </div>
         <div class="time">(上次更新时间：2023-8-14 16:53:23)</div>
       </div>
     </div>
-    <div class="content"></div>
+    <div class="content">
+      <div class="charts">
+        <div class="chart"></div>
+        <div class="chart"></div>
+        <div class="chart"></div>
+        <div class="chart"></div>
+      </div>
+      <el-pagination layout="prev, pager, next" :total="1000"> </el-pagination>
+    </div>
   </div>
 </template>
 
 <script>
+import BreadCrumb from "@/components/BreadCrumb.vue";
+import { mapMutations } from "vuex";
 export default {
   name: "RealTime",
+  components: { BreadCrumb },
   data() {
     return {
       carHeight: 0,
       value: "",
+      updateB: 0,
       options: [
         {
           value: "EnvironmentalWeather",
@@ -80,11 +100,25 @@ export default {
   mounted() {
     const dom = this.$refs.header;
     this.carHeight = dom.clientHeight;
+    this.SET_BREADS(this);
+    this.ADD_BREAD({
+      path: "/before/data/realtime",
+      meta: { title: "环境气象" },
+    });
   },
   methods: {
+    ...mapMutations("bread", ["SET_BREADS", "ADD_BREAD"]),
     changeModule(index) {
       console.log(index);
       console.log(this.options[index].value);
+      let name = this.options[index].name;
+      const bread = {
+        path: "/before/data/realtime",
+        meta: { title: name },
+      };
+      console.log(bread);
+      this.ADD_BREAD(bread);
+      this.updateB++;
     },
   },
 };
@@ -100,10 +134,12 @@ export default {
   .header {
     height: 5%;
     width: 96%;
-    background: skyblue;
+    background: rgb(51, 187, 240);
     border-bottom: 2px solid grey;
     display: flex;
     justify-content: center;
+    position: relative;
+    align-items: center;
     .el-carousel__item {
       display: flex;
       align-items: center;
@@ -137,18 +173,75 @@ export default {
     align-items: center;
     .right {
       display: flex;
-      width: 60%;
+      width: 50%;
       justify-content: space-between;
       align-items: center;
+      .op {
+        display: flex;
+        width: 70%;
+        justify-content: flex-end;
+        align-items: center;
+        .op1,
+        .op2 {
+          display: flex;
+          align-items: center;
+          margin-left: 10%;
+        }
+      }
     }
   }
   .content {
-    width: 100%;
     flex: 1;
     background: skyblue;
     box-sizing: border-box;
     width: 99%;
     border: 1px solid rebeccapurple;
+    margin-bottom: 0.2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .charts {
+      flex: 1;
+      background: orange;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      align-items: center;
+      .chart {
+        width: 49.5%;
+        height: 49%;
+        background: pink;
+      }
+    }
+
+    ::v-deep .el-pagination .btn-next {
+      background-color: rgba(0, 0, 0, 0) !important;
+    }
+
+    ::v-deep .el-pagination .btn-prev {
+      background-color: rgba(0, 0, 0, 0) !important;
+    }
+
+    ::v-deep .el-pagination button:disabled {
+      background-color: rgba(0, 0, 0, 0) !important;
+    }
+
+    ::v-deep .el-pager li {
+      background: rgba(0, 0, 0, 0) !important;
+    }
+
+    ::v-deep .el-pagination .btn-prev .el-icon {
+      font-size: 20px !important;
+    }
+    ::v-deep .el-pagination .btn-next .el-icon {
+      font-size: 20px !important;
+    }
+
+    ::v-deep .el-pager li {
+      font-size: 16px;
+    }
   }
 }
 </style>
