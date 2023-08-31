@@ -77,7 +77,7 @@ export default {
     }
   }
   .middle {
-    height: 4.5%;
+    height: 4%;
     background: skyblue;
     display: flex;
     justify-content: space-between;
@@ -93,7 +93,7 @@ export default {
     }
   }
   .container {
-    height: 86.5%;
+    flex: 1;
     background: orange;
   }
 

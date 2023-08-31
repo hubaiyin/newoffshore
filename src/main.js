@@ -3,6 +3,7 @@ import App from './App.vue'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import Vuex from 'vuex'
+import store from '@/store/index'
 import dataV from '@jiaminghi/data-view'
 import VueRouter from 'vue-router'
 import router from './router/index'
@@ -16,5 +17,6 @@ Vue.use(VueRouter)
 
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')
