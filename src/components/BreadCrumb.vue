@@ -16,9 +16,12 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .bread {
   position: absolute;
   left: 2%;
+  .el-breadcrumb__inner {
+    color: #b7c0d5;
+  }
 }
 </style>
