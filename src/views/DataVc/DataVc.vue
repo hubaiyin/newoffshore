@@ -1,6 +1,6 @@
 <template>
   <div class="data">
-    <el-radio-group v-model="tabPosition" style="width: 100%" size="medium">
+    <el-radio-group v-model="tabPosition" size="medium" fill="#4165db">
       <el-radio-button
         label="/before/data/realtime"
         @click.native="jump($event, '/before/data/realtime')"
@@ -57,9 +57,11 @@ export default {
   flex-direction: column;
 }
 .data > .el-radio-group {
-  height: 5%;
+  height: 4%;
+  width: 90%;
   display: flex;
   justify-content: space-around;
+  margin: 0 auto;
 }
 .data > .el-radio-group .el-radio-button {
   width: 33.3%;
@@ -78,6 +80,8 @@ export default {
   align-items: center;
   justify-content: center;
   padding: 0;
+  border-left: none !important;
+  color: #fff;
 }
 .data > .el-radio-group .el-radio-button--medium .el-radio-button__inner {
   box-sizing: border-box;
@@ -89,6 +93,9 @@ export default {
   align-items: center;
   justify-content: center;
   font-size: large;
+  background: rgba(0, 0, 0, 0) !important;
+  border-left: none !important;
+  color: #b7c0d5;
 }
 .data .showWay {
   height: 95%;
