@@ -4,9 +4,11 @@ import Vuex from 'vuex'
 Vue.use(Vuex);
 
 import bread from './bread';
+import charts from './charts';
 
 export default new Vuex.Store({
     modules: {
-        bread
+        bread,
+        charts
     }
 })

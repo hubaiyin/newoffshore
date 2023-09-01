@@ -52,10 +52,14 @@
     </div>
     <div class="content">
       <div class="charts">
-        <div class="chart"></div>
-        <div class="chart"></div>
-        <div class="chart"></div>
-        <div class="chart"></div>
+        <div
+          class="chart"
+          v-for="item in data"
+          :key="item.title.text"
+          :class="data.length === 1 ? 'only' : data.length < 3 ? 'double' : ''"
+        >
+          <Charts :chartOption="item" />
+        </div>
       </div>
       <el-pagination layout="prev, pager, next" :total="1000"> </el-pagination>
     </div>
@@ -64,10 +68,11 @@
 
 <script>
 import BreadCrumb from "@/components/BreadCrumb.vue";
-import { mapMutations } from "vuex";
+import { mapMutations, mapState } from "vuex";
+import Charts from "@/components/Echarts.vue";
 export default {
   name: "RealTime",
-  components: { BreadCrumb },
+  components: { BreadCrumb, Charts },
   data() {
     return {
       carHeight: 0,
@@ -105,6 +110,7 @@ export default {
       path: "/before/data/realtime",
       meta: { title: "环境气象" },
     });
+    console.log(this.data);
   },
   methods: {
     ...mapMutations("bread", ["SET_BREADS", "ADD_BREAD"]),
@@ -120,6 +126,9 @@ export default {
       this.ADD_BREAD(bread);
       this.updateB++;
     },
+  },
+  computed: {
+    ...mapState("charts", ["data"]),
   },
 };
 </script>
@@ -214,7 +223,13 @@ export default {
       .chart {
         width: 49.5%;
         height: 49%;
-        background: #fff;
+      }
+      .only {
+        width: 90%;
+        height: 90%;
+      }
+      .double {
+        height: 90%;
       }
     }
 
