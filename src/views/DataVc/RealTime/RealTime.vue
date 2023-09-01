@@ -58,7 +58,10 @@
           :key="item.title.text"
           :class="data.length === 1 ? 'only' : data.length < 3 ? 'double' : ''"
         >
-          <Charts :chartOption="item" />
+          <dv-border-box-11 :title="item.title.text"
+            ><div class="chartBox">
+              <Charts :chartOption="item" /></div
+          ></dv-border-box-11>
         </div>
       </div>
       <el-pagination layout="prev, pager, next" :total="1000"> </el-pagination>
@@ -223,6 +226,13 @@ export default {
       .chart {
         width: 49.5%;
         height: 49%;
+        .chartBox {
+          height: 100%;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
       }
       .only {
         width: 90%;
