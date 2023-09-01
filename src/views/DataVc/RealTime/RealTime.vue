@@ -221,11 +221,15 @@ export default {
     ::v-deep .el-pagination .btn-next {
       background-color: rgba(0, 0, 0, 0) !important;
       color: #fff;
+      height: 24px;
+      line-height: 24px;
     }
 
     ::v-deep .el-pagination .btn-prev {
       background-color: rgba(0, 0, 0, 0) !important;
       color: #fff;
+      height: 24px;
+      line-height: 24px;
     }
 
     ::v-deep .el-pagination button:disabled {
@@ -235,18 +239,22 @@ export default {
 
     ::v-deep .el-pager li {
       background: rgba(0, 0, 0, 0) !important;
-      font-size: 21px !important;
-      height: 28px;
-      line-height: 28px;
+      font-size: 18px !important;
+      height: 24px;
+      line-height: 24px;
       color: #ffffff;
     }
 
     ::v-deep .el-pagination .btn-prev .el-icon {
-      font-size: 21px !important;
+      font-size: 18px !important;
+      height: 24px;
+      line-height: 24px;
       // color: #fff;
     }
     ::v-deep .el-pagination .btn-next .el-icon {
-      font-size: 21px !important;
+      font-size: 18px !important;
+      height: 24px;
+      line-height: 24px;
       color: #fff;
     }
     ::v-deep .el-pager li.active {
