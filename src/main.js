@@ -7,6 +7,7 @@ import store from '@/store/index'
 import dataV from '@jiaminghi/data-view'
 import VueRouter from 'vue-router'
 import router from './router/index'
+import './assets/style/font1.less'
 
 Vue.config.productionTip = false
 
