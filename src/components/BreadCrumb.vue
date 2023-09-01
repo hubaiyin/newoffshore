@@ -21,7 +21,7 @@ export default {
   position: absolute;
   left: 2%;
   .el-breadcrumb__inner {
-    color: #b7c0d5;
+    color: #fff;
   }
 }
 </style>
