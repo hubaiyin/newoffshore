@@ -1,22 +1,28 @@
 <template>
-  <div class="data">
-    <el-radio-group v-model="tabPosition" size="medium" fill="#4165db">
-      <el-radio-button
-        label="/before/data/realtime"
-        @click.native="jump($event, '/before/data/realtime')"
-        ><i class="el-icon-view"></i>实时监测</el-radio-button
+  <div class="date">
+    <div style="height: 8%; weight: 90%">
+      <dv-border-box-3
+        ><div class="data">
+          <el-radio-group v-model="tabPosition" size="medium" fill="#4165db">
+            <el-radio-button
+              label="/before/data/realtime"
+              @click.native="jump($event, '/before/data/realtime')"
+              ><i class="el-icon-view"></i>实时监测</el-radio-button
+            >
+            <el-radio-button
+              label="/before/data/history"
+              @click.native="jump($event, '/before/data/history')"
+              ><i class="el-icon-time"></i>历史数据</el-radio-button
+            >
+            <el-radio-button
+              label="/before/data/analysis"
+              @click.native="jump($event, '/before/data/analysis')"
+              ><i class="el-icon-data-analysis"></i>数据分析</el-radio-button
+            >
+          </el-radio-group>
+        </div></dv-border-box-3
       >
-      <el-radio-button
-        label="/before/data/history"
-        @click.native="jump($event, '/before/data/history')"
-        ><i class="el-icon-time"></i>历史数据</el-radio-button
-      >
-      <el-radio-button
-        label="/before/data/analysis"
-        @click.native="jump($event, '/before/data/analysis')"
-        ><i class="el-icon-data-analysis"></i>数据分析</el-radio-button
-      >
-    </el-radio-group>
+    </div>
     <div class="showWay">
       <router-view></router-view>
     </div>
@@ -50,14 +56,14 @@ export default {
 </script>
 
 <style lang="scss">
-.data {
+.date {
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 .data > .el-radio-group {
-  height: 4%;
+  height: 100%;
   width: 90%;
   display: flex;
   justify-content: space-around;
@@ -100,8 +106,22 @@ export default {
   border: none;
   color: #b7c0d5;
 }
-.data .showWay {
+.date .showWay {
   height: 95%;
   // padding: 0.3%;
+}
+
+.date {
+  .dv-border-box-3 {
+    .border-box-content {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .data {
+        width: 70%;
+      }
+    }
+  }
 }
 </style>
