@@ -169,7 +169,7 @@ export default {
         justify-content: center;
       }
     }
-    .after:hover {
+    .option:hover {
       background-color: #039dcc; /* 设置背景色 */
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.4); /* 设置发光效果 */
       transition: 1.7s;
