@@ -1,22 +1,28 @@
 <template>
-  <div class="data">
-    <el-radio-group v-model="tabPosition" style="width: 100%" size="medium">
-      <el-radio-button
-        label="/before/data/realtime"
-        @click.native="jump($event, '/before/data/realtime')"
-        ><i class="el-icon-view"></i>实时监测</el-radio-button
+  <div class="date">
+    <div style="height: 8%; weight: 90%">
+      <dv-border-box-3
+        ><div class="data">
+          <el-radio-group v-model="tabPosition" size="medium" fill="#4165db">
+            <el-radio-button
+              label="/before/data/realtime"
+              @click.native="jump($event, '/before/data/realtime')"
+              ><i class="el-icon-view"></i>实时监测</el-radio-button
+            >
+            <el-radio-button
+              label="/before/data/history"
+              @click.native="jump($event, '/before/data/history')"
+              ><i class="el-icon-time"></i>历史数据</el-radio-button
+            >
+            <el-radio-button
+              label="/before/data/analysis"
+              @click.native="jump($event, '/before/data/analysis')"
+              ><i class="el-icon-data-analysis"></i>数据分析</el-radio-button
+            >
+          </el-radio-group>
+        </div></dv-border-box-3
       >
-      <el-radio-button
-        label="/before/data/history"
-        @click.native="jump($event, '/before/data/history')"
-        ><i class="el-icon-time"></i>历史数据</el-radio-button
-      >
-      <el-radio-button
-        label="/before/data/analysis"
-        @click.native="jump($event, '/before/data/analysis')"
-        ><i class="el-icon-data-analysis"></i>数据分析</el-radio-button
-      >
-    </el-radio-group>
+    </div>
     <div class="showWay">
       <router-view></router-view>
     </div>
@@ -50,17 +56,21 @@ export default {
 </script>
 
 <style lang="scss">
-.data {
+.date {
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 .data > .el-radio-group {
-  height: 5%;
+  height: 100%;
+  width: 90%;
   display: flex;
   justify-content: space-around;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0);
 }
+
 .data > .el-radio-group .el-radio-button {
   width: 33.3%;
   height: 100%;
@@ -78,6 +88,8 @@ export default {
   align-items: center;
   justify-content: center;
   padding: 0;
+  color: #fff;
+  box-shadow: rgb(65, 101, 219) 0px 0px 0px 0px !important;
 }
 .data > .el-radio-group .el-radio-button--medium .el-radio-button__inner {
   box-sizing: border-box;
@@ -89,9 +101,27 @@ export default {
   align-items: center;
   justify-content: center;
   font-size: large;
+  background: rgba(0, 0, 0, 0) !important;
+  // border-left: none !important;
+  border: none;
+  color: #b7c0d5;
 }
-.data .showWay {
+.date .showWay {
   height: 95%;
   // padding: 0.3%;
+}
+
+.date {
+  .dv-border-box-3 {
+    .border-box-content {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .data {
+        width: 70%;
+      }
+    }
+  }
 }
 </style>

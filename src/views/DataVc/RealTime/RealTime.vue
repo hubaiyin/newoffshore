@@ -126,15 +126,16 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  background: pink;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #fff;
   .header {
     height: 5%;
+    min-height: 42px;
+    // background: #000;
     width: 96%;
-    background: rgb(51, 187, 240);
     border-bottom: 2px solid grey;
     display: flex;
     justify-content: center;
@@ -147,6 +148,7 @@ export default {
     }
     .el-carousel__item h3 {
       // color: #475669;
+      color: #e3e9f8;
       font-size: 18px;
       // opacity: 0.75;
       margin: 0;
@@ -192,7 +194,6 @@ export default {
   }
   .content {
     flex: 1;
-    background: skyblue;
     box-sizing: border-box;
     width: 99%;
     border: 1px solid rebeccapurple;
@@ -203,44 +204,53 @@ export default {
 
     .charts {
       flex: 1;
-      background: orange;
       width: 100%;
       display: flex;
       justify-content: space-around;
       flex-wrap: wrap;
       align-items: center;
+      box-sizing: border-box;
+      padding-bottom: 0.3%;
       .chart {
         width: 49.5%;
         height: 49%;
-        background: pink;
+        background: #fff;
       }
     }
 
     ::v-deep .el-pagination .btn-next {
       background-color: rgba(0, 0, 0, 0) !important;
+      color: #fff;
     }
 
     ::v-deep .el-pagination .btn-prev {
       background-color: rgba(0, 0, 0, 0) !important;
+      color: #fff;
     }
 
     ::v-deep .el-pagination button:disabled {
       background-color: rgba(0, 0, 0, 0) !important;
+      color: #b4b5b7;
     }
 
     ::v-deep .el-pager li {
       background: rgba(0, 0, 0, 0) !important;
+      font-size: 21px !important;
+      height: 28px;
+      line-height: 28px;
+      color: #ffffff;
     }
 
     ::v-deep .el-pagination .btn-prev .el-icon {
-      font-size: 20px !important;
+      font-size: 21px !important;
+      // color: #fff;
     }
     ::v-deep .el-pagination .btn-next .el-icon {
-      font-size: 20px !important;
+      font-size: 21px !important;
+      color: #fff;
     }
-
-    ::v-deep .el-pager li {
-      font-size: 16px;
+    ::v-deep .el-pager li.active {
+      color: #409eff;
     }
   }
 }
