@@ -262,7 +262,7 @@ export default {
         // width: 2px solid pink;
         height: 100%;
         width: 100%;
-        font-size: 41px;
+        font-size: calc(26px + 1vw);
         font-family: "YouShe";
         color: white;
         display: flex;
