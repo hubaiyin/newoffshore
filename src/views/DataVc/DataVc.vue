@@ -1,5 +1,5 @@
 <template>
-  <div class="date">
+  <div class="date-1">
     <div style="height: 8%; weight: 90%">
       <dv-border-box-3
         ><div class="data">
@@ -56,7 +56,7 @@ export default {
 </script>
 
 <style lang="scss">
-.date {
+.date-1 {
   height: 100%;
   width: 100%;
   display: flex;
@@ -106,12 +106,12 @@ export default {
   border: none;
   color: #b7c0d5;
 }
-.date .showWay {
+.date-1 .showWay {
   height: 95%;
   // padding: 0.3%;
 }
 
-.date {
+.date-1 {
   .dv-border-box-3 {
     .border-box-content {
       width: 100%;
