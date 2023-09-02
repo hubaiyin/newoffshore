@@ -171,7 +171,7 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(#032998, #0f276d);
+  background: linear-gradient(#193eae, #5394df, #132d78);
   .header,
   .middle,
   .container {
