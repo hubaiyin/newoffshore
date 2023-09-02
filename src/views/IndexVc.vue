@@ -79,39 +79,37 @@
           >
         </div> -->
         <div class="title">
-          <div class="text">
-              海上光伏可视化大屏
-          </div>
+          <div class="text">海上光伏可视化大屏</div>
         </div>
         <div class="mainNav">
           <div class="nav">
             <div class="btnList">
               <div @click="jump('', '/before/home')">
-                  <span>首页总览</span>
+                <span>首页总览</span>
               </div>
               <div @click="jump('data', '/before/data')">
-                  <span>数据监测</span>
+                <span>数据监测</span>
               </div>
               <div @click="jump('device', '/before/device')">
-                  <span>设备管理</span>
+                <span>设备管理</span>
               </div>
               <div @click="jump('monitor', '/before/monitor')">
-                  <span>监控画面</span>
+                <span>监控画面</span>
               </div>
               <div @click="jump('warn', '/before/warn')">
-                  <span>预警管理</span>
+                <span>预警管理</span>
               </div>
               <div @click="jump('report', '/before/report')">
-                  <span>报表管理</span>
+                <span>报表管理</span>
               </div>
               <div @click="jump('log', '/before/log')">
-                  <span>系统日志</span>
+                <span>系统日志</span>
               </div>
             </div>
           </div>
           <div class="date">
-              <span>{{ weeks[week] }}</span>
-              <span>{{ time }}</span>
+            <span>{{ weeks[week] }}</span>
+            <span>{{ time }}</span>
           </div>
           <div class="register">
             <div class="login">注册 | 登录</div>
@@ -125,7 +123,7 @@
   </dv-full-screen-container>
 </template>
 <script>
-import moment from 'moment'
+import moment from "moment";
 export default {
   name: "IndexVc",
   data() {
@@ -180,68 +178,68 @@ export default {
     box-sizing: border-box;
   }
   .header {
-  //     height: 9%;
-  //     display: flex;
-  //     justify-content: space-around;
-  //     align-items: center;
-  //     color: #fff;
-  //     border: 2px solid white;
-  //   .main, 
-  //   .after {
-  //     // border: 2px solid red;
-  //     display: flex;
-  //     justify-content: center;
-  //     align-items: center;
-  //     height: 94%;
-  //     perspective: 1000px;
-  //     cursor: pointer;
-  //   }
+    //     height: 9%;
+    //     display: flex;
+    //     justify-content: space-around;
+    //     align-items: center;
+    //     color: #fff;
+    //     border: 2px solid white;
+    //   .main,
+    //   .after {
+    //     // border: 2px solid red;
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: center;
+    //     height: 94%;
+    //     perspective: 1000px;
+    //     cursor: pointer;
+    //   }
 
-  //   .main {
-  //     height: 100%;
-  //     flex-direction: column;
-  //     font-size: 25px;
-  //     width: 20%;
-  //     border: 2px solid greenyellow;
-  //     overflow: hidden;
-  //     .mainTop {
-  //       border: 2px solid yellow;
-  //       height: 5%;
-  //     }
-  //     .title {
-  //       height: 95%;
-  //       width: 100%;
-  //       display: flex;
-  //       flex-direction: column;
-  //       justify-content: center;
-  //       align-items: center;
-  //     }
-  //   }
-  //   .after {
-  //     border: 2px solid red;
-  //     height: 70%;
-  //     width: 10%;
-  //     font-size: 18px;
-  //     .underline {
-  //       border-bottom: 3px solid #4b77d5;
-  //       color: #20c8fb;
-  //       text-shadow: 0 0 10px #26c8f9;
-  //       transition: 1s;
-  //       pointer-events: none;
-  //     }
-  //     .option {
-  //       height: 100%;
-  //       width: 100%;
-  //       display: flex;
-  //       align-items: center;
-  //       justify-content: center;
-  //     }
-  //   }
-  //   .after:hover {
-  //     background-color: #039dcc; /* 设置背景色 */
-  //     box-shadow: 0 0 20px rgba(255, 255, 255, 0.4); /* 设置发光效果 */
-  //     transition: 1.7s;
-  //   }
+    //   .main {
+    //     height: 100%;
+    //     flex-direction: column;
+    //     font-size: 25px;
+    //     width: 20%;
+    //     border: 2px solid greenyellow;
+    //     overflow: hidden;
+    //     .mainTop {
+    //       border: 2px solid yellow;
+    //       height: 5%;
+    //     }
+    //     .title {
+    //       height: 95%;
+    //       width: 100%;
+    //       display: flex;
+    //       flex-direction: column;
+    //       justify-content: center;
+    //       align-items: center;
+    //     }
+    //   }
+    //   .after {
+    //     border: 2px solid red;
+    //     height: 70%;
+    //     width: 10%;
+    //     font-size: 18px;
+    //     .underline {
+    //       border-bottom: 3px solid #4b77d5;
+    //       color: #20c8fb;
+    //       text-shadow: 0 0 10px #26c8f9;
+    //       transition: 1s;
+    //       pointer-events: none;
+    //     }
+    //     .option {
+    //       height: 100%;
+    //       width: 100%;
+    //       display: flex;
+    //       align-items: center;
+    //       justify-content: center;
+    //     }
+    //   }
+    //   .after:hover {
+    //     background-color: #039dcc; /* 设置背景色 */
+    //     box-shadow: 0 0 20px rgba(255, 255, 255, 0.4); /* 设置发光效果 */
+    //     transition: 1.7s;
+    //   }
   }
 
   .header {
@@ -286,7 +284,9 @@ export default {
       align-items: center;
       position: relative;
       // left: 0.7%;
-      .nav,.date,.register {
+      .nav,
+      .date,
+      .register {
         // transform: skewX(20deg);
       }
       .nav {
@@ -302,7 +302,7 @@ export default {
             // background: #2446f0;
             background: #2142e7;
             color: white;
-            border-left: 3px solid ;
+            border-left: 3px solid;
             border-left-color: rgba(6, 43, 228, 0.8);
             box-shadow: 0px 5px 8px -3px rgb(106, 144, 235);
             padding: 10px 20px;
@@ -322,7 +322,7 @@ export default {
           }
 
           div::before {
-            content: '';
+            content: "";
             position: absolute;
             top: 0;
             bottom: 0;

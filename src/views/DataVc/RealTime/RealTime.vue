@@ -226,6 +226,8 @@ export default {
       .chart {
         width: 49.5%;
         height: 49%;
+        // background: rgba($color: #091942, $alpha: 0.1);
+        border-radius: 30px;
         .chartBox {
           height: 100%;
           width: 100%;
