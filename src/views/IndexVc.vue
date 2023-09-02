@@ -171,7 +171,7 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(#032998, #0f276d);
+  background: linear-gradient(#193eae, #5394df , #132d78);
   .header,
   .middle,
   .container {
@@ -262,8 +262,8 @@ export default {
         // width: 2px solid pink;
         height: 100%;
         width: 100%;
-        font-size: 41px;
-        font-family: "YouShe";
+        font-size: calc(26px + 1vw);
+        font-family:"YouShe";
         color: white;
         display: flex;
         justify-content: center;
