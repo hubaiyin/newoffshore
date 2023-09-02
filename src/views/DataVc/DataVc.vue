@@ -1,7 +1,7 @@
 <template>
   <div class="date-1">
-    <div style="height: 8%; weight: 90%">
-      <dv-border-box-3
+    <div class="header">
+      <dv-border-box-12 :color="['#819DEC' ,'#81deec']" backgroundColor="none" 
         ><div class="data">
           <el-radio-group v-model="tabPosition" size="medium" fill="#4165db">
             <el-radio-button
@@ -20,7 +20,7 @@
               ><i class="el-icon-data-analysis"></i>数据分析</el-radio-button
             >
           </el-radio-group>
-        </div></dv-border-box-3
+        </div></dv-border-box-12
       >
     </div>
     <div class="showWay">
@@ -56,19 +56,32 @@ export default {
 </script>
 
 <style lang="scss">
+.header {
+  // border: 2px solid green;
+  width: 100%;
+  height: 6.5%;
+}
 .date-1 {
   height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
 }
+.data {
+  // background-color: red;
+  width: 100%;
+  height: 100%;
+  margin: 0.2% 0%;
+}
 .data > .el-radio-group {
   height: 100%;
   width: 90%;
+  // border: 2px solid white;
   display: flex;
   justify-content: space-around;
   margin: 0 auto;
   background: rgba(0, 0, 0, 0);
+  color: #81deec;
 }
 
 .data > .el-radio-group .el-radio-button {
