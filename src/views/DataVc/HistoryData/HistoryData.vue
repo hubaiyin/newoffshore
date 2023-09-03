@@ -11,8 +11,8 @@
       </div>
       <div class="right">
         <el-radio-group v-model="radio" size="mini">
-          <el-radio-button label="上海"></el-radio-button>
-          <el-radio-button label="北京"></el-radio-button>
+          <el-radio-button label="表格"></el-radio-button>
+          <el-radio-button label="图表"></el-radio-button>
         </el-radio-group>
       </div>
     </div>
@@ -20,10 +20,10 @@
       <div class="header">
         <div class="left">
           <el-radio-group v-model="radio" size="mini">
-            <el-radio-button label="上海"></el-radio-button>
-            <el-radio-button label="北京"></el-radio-button>
-            <el-radio-button label="广州"></el-radio-button>
-            <el-radio-button label="深圳"></el-radio-button>
+            <el-radio-button label="近一天"></el-radio-button>
+            <el-radio-button label="近一周"></el-radio-button>
+            <el-radio-button label="近一个月"></el-radio-button>
+            <el-radio-button label="近三个月"></el-radio-button>
           </el-radio-group>
           <el-date-picker
             v-model="value1"
@@ -39,7 +39,7 @@
         </div>
       </div>
       <div class="select">
-        <el-select v-model="value1" size="mini" placeholder="请选择">
+        <el-select v-model="value1" size="mini" placeholder="按测点查询">
           <el-option
             v-for="item in options"
             :key="item.value"
@@ -48,7 +48,7 @@
           >
           </el-option>
         </el-select>
-        <el-select v-model="value1" size="mini" placeholder="请选择">
+        <el-select v-model="value1" size="mini" placeholder="请选择标签">
           <el-option
             v-for="item in options"
             :key="item.value"
@@ -57,7 +57,7 @@
           >
           </el-option>
         </el-select>
-        <el-select v-model="value1" size="mini" placeholder="请选择">
+        <el-select v-model="value1" size="mini" placeholder="请选择监测项目">
           <el-option
             v-for="item in options"
             :key="item.value"
@@ -66,7 +66,7 @@
           >
           </el-option>
         </el-select>
-        <el-select v-model="value1" size="mini" placeholder="请选择">
+        <el-select v-model="value1" size="mini" placeholder="请选择安装位置">
           <el-option
             v-for="item in options"
             :key="item.value"
@@ -75,7 +75,16 @@
           >
           </el-option>
         </el-select>
-        <el-select v-model="value1" size="mini" placeholder="请选择">
+        <el-select v-model="value1" size="mini" placeholder="请选择测点">
+          <el-option
+            v-for="item in options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          >
+          </el-option>
+        </el-select>
+        <el-select v-model="value1" size="mini" placeholder="请选择传感器">
           <el-option
             v-for="item in options"
             :key="item.value"
@@ -85,15 +94,22 @@
           </el-option>
         </el-select>
       </div>
-      <div class="table">
-
-      </div>
+      <dv-border-box-11 class="table" title="历史数据">
+        <div class="main">
+          <Charts :chartOption="datas[0]" style="height: 90%" />
+        </div>
+      </dv-border-box-11>
     </div>
   </div>
 </template>
 <script>
+import Charts from "@/components/Echarts.vue";
+import { mapGetters, mapState } from "vuex";
 export default {
   name: "HistoryData",
+  components: {
+    Charts,
+  },
   data() {
     return {
       options: [
@@ -123,15 +139,19 @@ export default {
       radio: "上海",
     };
   },
+  computed: {
+    ...mapState("charts", ["data"]),
+    ...mapGetters("charts", ["datas"]),
+  },
 };
 </script>
 <style lang="scss" scoped>
 .history-data {
   box-sizing: border-box;
   padding: 1%;
+  padding-top: 0;
   width: 100%;
   height: 100%;
-  background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -149,12 +169,20 @@ export default {
       height: 100%;
       display: flex;
       align-items: center;
+      ::v-deep .el-breadcrumb__inner {
+        color: #fff;
+      }
     }
     .right {
       width: 8%;
       height: 100%;
       display: flex;
       align-items: center;
+      ::v-deep .el-radio-button__inner {
+        background-color: rgba($color: #000000, $alpha: 0);
+        border: 1px solid #0093ce;
+        color: #fff;
+      }
     }
   }
   .main {
@@ -169,11 +197,21 @@ export default {
       justify-content: space-between;
       align-items: center;
       .left {
-        width: 30%;
+        width: 35%;
         height: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        ::v-deep .el-radio-button__inner {
+          background-color: rgba($color: #000000, $alpha: 0);
+          border: 1px solid #0093ce;
+          color: #fff;
+        }
+        ::v-deep .el-input__inner {
+          background-color: rgba($color: #000000, $alpha: 0);
+          border: 1px solid #0093ce;
+          color: #fff;
+        }
       }
       .right {
         width: 12%;
@@ -185,6 +223,9 @@ export default {
           width: 40%;
           height: 80%;
           border: none;
+          border-radius: 10%;
+          background-color: #427DD2;
+          color: #fff;
         }
       }
     }
@@ -193,10 +234,21 @@ export default {
       width: 100%;
       height: 5%;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: center;
       .el-select {
-        width: 19%;
+        width: 15%;
+        ::v-deep .el-input__inner {
+          background-color: rgba($color: #000000, $alpha: 0);
+          border: 1px solid #0093ce;
+        }
+        ::v-deep .el-input__inner::placeholder {
+          color: #409eff;
+        }
+
+        ::v-deep .el-select .el-input .el-select__caret {
+          color: #409eff;
+        }
       }
       .el-option {
         width: 19%;
@@ -206,7 +258,13 @@ export default {
       box-sizing: border-box;
       margin-top: 0.1%;
       width: 100%;
-      height: 80%;
+      height: 74%;
+      .main {
+        box-sizing: border-box;
+        padding-top: 4%;
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 }
