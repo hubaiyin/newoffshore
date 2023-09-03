@@ -16,12 +16,19 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .bread {
   position: absolute;
   left: 2%;
-  .el-breadcrumb__inner {
+  ::v-deep .el-breadcrumb__inner {
     color: #fff;
+  }
+
+  ::v-deep .el-breadcrumb__item:last-child .el-breadcrumb__inner,
+  .el-breadcrumb__item:last-child .el-breadcrumb__inner a,
+  .el-breadcrumb__item:last-child .el-breadcrumb__inner a:hover,
+  .el-breadcrumb__item:last-child .el-breadcrumb__inner:hover {
+    color: #eceaea;
   }
 }
 </style>
