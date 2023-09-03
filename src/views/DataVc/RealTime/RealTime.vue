@@ -54,9 +54,11 @@
       <div class="charts">
         <div
           class="chart"
-          v-for="item in data"
+          v-for="item in datas"
           :key="item.title.text"
-          :class="data.length === 1 ? 'only' : data.length < 3 ? 'double' : ''"
+          :class="
+            datas.length === 1 ? 'only' : datas.length < 3 ? 'double' : ''
+          "
         >
           <dv-border-box-11 :title="item.title.text"
             ><div class="chartBox">
@@ -71,7 +73,7 @@
 
 <script>
 import BreadCrumb from "@/components/BreadCrumb.vue";
-import { mapMutations, mapState } from "vuex";
+import { mapGetters, mapMutations, mapState } from "vuex";
 import Charts from "@/components/Echarts.vue";
 export default {
   name: "RealTime",
@@ -106,6 +108,7 @@ export default {
     };
   },
   mounted() {
+    console.log(this.datas);
     const dom = this.$refs.header;
     this.carHeight = dom.clientHeight;
     this.SET_BREADS(this);
@@ -113,7 +116,7 @@ export default {
       path: "/before/data/realtime",
       meta: { title: "环境气象" },
     });
-    console.log(this.data);
+    // console.log(this.data);
   },
   methods: {
     ...mapMutations("bread", ["SET_BREADS", "ADD_BREAD"]),
@@ -132,6 +135,7 @@ export default {
   },
   computed: {
     ...mapState("charts", ["data"]),
+    ...mapGetters("charts", ["datas"]),
   },
 };
 </script>
