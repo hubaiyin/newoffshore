@@ -11,9 +11,6 @@ export default {
 </script>
 
 <style>
-:root {
-  font-size: 1vw;
-}
 #app {
   width: 100%;
   height: 100%;

@@ -142,7 +142,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #fff;
+  color: #e9e7e7;
   .header {
     height: 5%;
     min-height: 42px;
@@ -187,20 +187,37 @@ export default {
     align-items: center;
     .right {
       display: flex;
-      width: 50%;
-      justify-content: space-between;
+      width: 70%;
+      justify-content: flex-end;
       align-items: center;
       .op {
         display: flex;
-        width: 70%;
+        width: 60%;
         justify-content: flex-end;
         align-items: center;
         .op1,
         .op2 {
           display: flex;
           align-items: center;
-          margin-left: 10%;
+          padding: 0 1%;
+          box-sizing: border-box;
+          // margin-left: 10%;
         }
+        ::v-deep .el-input__inner {
+          background-color: rgba($color: #000000, $alpha: 0);
+          border: 1px solid #0093ce;
+        }
+        ::v-deep .el-input__inner::placeholder {
+          color: #409eff;
+        }
+
+        ::v-deep .el-select .el-input .el-select__caret {
+          color: #409eff;
+        }
+      }
+      .time {
+        padding: 0 1%;
+        box-sizing: border-box;
       }
     }
   }
