@@ -171,76 +171,76 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(#193eae, #5394df , #132d78);
+  background: linear-gradient(#193eae, #5394df, #132d78);
   .header,
   .middle,
   .container {
     box-sizing: border-box;
   }
-  .header {
-    //     height: 9%;
-    //     display: flex;
-    //     justify-content: space-around;
-    //     align-items: center;
-    //     color: #fff;
-    //     border: 2px solid white;
-    //   .main,
-    //   .after {
-    //     // border: 2px solid red;
-    //     display: flex;
-    //     justify-content: center;
-    //     align-items: center;
-    //     height: 94%;
-    //     perspective: 1000px;
-    //     cursor: pointer;
-    //   }
+  /* .header {
+        height: 9%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        color: #fff;
+        border: 2px solid white;
+      .main,
+      .after {
+        // border: 2px solid red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 94%;
+        perspective: 1000px;
+        cursor: pointer;
+      }
 
-    //   .main {
-    //     height: 100%;
-    //     flex-direction: column;
-    //     font-size: 25px;
-    //     width: 20%;
-    //     border: 2px solid greenyellow;
-    //     overflow: hidden;
-    //     .mainTop {
-    //       border: 2px solid yellow;
-    //       height: 5%;
-    //     }
-    //     .title {
-    //       height: 95%;
-    //       width: 100%;
-    //       display: flex;
-    //       flex-direction: column;
-    //       justify-content: center;
-    //       align-items: center;
-    //     }
-    //   }
-    //   .after {
-    //     border: 2px solid red;
-    //     height: 70%;
-    //     width: 10%;
-    //     font-size: 18px;
-    //     .underline {
-    //       border-bottom: 3px solid #4b77d5;
-    //       color: #20c8fb;
-    //       text-shadow: 0 0 10px #26c8f9;
-    //       transition: 1s;
-    //       pointer-events: none;
-    //     }
-    //     .option {
-    //       height: 100%;
-    //       width: 100%;
-    //       display: flex;
-    //       align-items: center;
-    //       justify-content: center;
-    //     }
-    //   }
-    //   .after:hover {
-    //     background-color: #039dcc; /* 设置背景色 */
-    //     box-shadow: 0 0 20px rgba(255, 255, 255, 0.4); /* 设置发光效果 */
-    //     transition: 1.7s;
-    //   }
-  }
+      .main {
+        height: 100%;
+        flex-direction: column;
+        font-size: 25px;
+        width: 20%;
+        border: 2px solid greenyellow;
+        overflow: hidden;
+        .mainTop {
+          border: 2px solid yellow;
+          height: 5%;
+        }
+        .title {
+          height: 95%;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+      .after {
+        border: 2px solid red;
+        height: 70%;
+        width: 10%;
+        font-size: 18px;
+        .underline {
+          border-bottom: 3px solid #4b77d5;
+          color: #20c8fb;
+          text-shadow: 0 0 10px #26c8f9;
+          transition: 1s;
+          pointer-events: none;
+        }
+        .option {
+          height: 100%;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+      .after:hover {
+        background-color: #039dcc;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.4); 
+        transition: 1.7s;
+      }
+  } */
 
   .header {
     height: 8%;
@@ -263,7 +263,7 @@ export default {
         height: 100%;
         width: 100%;
         font-size: calc(26px + 1vw);
-        font-family:"YouShe";
+        font-family: "YouShe";
         color: white;
         display: flex;
         justify-content: center;
@@ -284,11 +284,11 @@ export default {
       align-items: center;
       position: relative;
       // left: 0.7%;
-      .nav,
+      /* .nav,
       .date,
       .register {
-        // transform: skewX(20deg);
-      }
+        transform: skewX(20deg);
+      } */
       .nav {
         display: flex;
         align-items: center;
