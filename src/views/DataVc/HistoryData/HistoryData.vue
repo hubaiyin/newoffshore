@@ -96,7 +96,7 @@
       </div>
       <dv-border-box-11 class="table" title="历史数据">
         <div class="main">
-          <Charts :chartOption="datas[0]" style="height: 90%" />
+          <Charts :chartOption="datas[0]" />
         </div>
       </dv-border-box-11>
     </div>
@@ -224,7 +224,7 @@ export default {
           height: 80%;
           border: none;
           border-radius: 10%;
-          background-color: #427DD2;
+          background-color: #427dd2;
           color: #fff;
         }
       }
@@ -258,10 +258,13 @@ export default {
       box-sizing: border-box;
       margin-top: 0.1%;
       width: 100%;
-      height: 74%;
+      height: 90%;
       .main {
         box-sizing: border-box;
-        padding-top: 4%;
+        // padding-top: 4%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 100%;
         height: 100%;
       }
