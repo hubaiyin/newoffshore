@@ -1,26 +1,39 @@
 <template>
   <div class="main">
-    <div class="up">
-      <div class="chart">
-        <!-- <many-line-charts></many-line-charts> -->
-      </div>
+    <div class="up">    
+        <dv-border-box-11 class="table" title="历史数据">
+          <div class="chart">
+            <Charts :chartOption="datas[0]" />
+          </div>
+        </dv-border-box-11>
     </div>
     <div class="down">
       <div class="downTop">
-        <el-button type="warning" @click="dialogVisible = true">
-          新增数据
-        </el-button>
+          <div class="downTitle">
+            <span>数据列表</span>
+          </div>
+          <div class="btn">
+            <el-button type="warning" @click="dialogVisible = true">
+              新增数据
+            </el-button>
+          </div>
       </div>
       <div class="form">
         <el-table
         :data="tableData"
         height="100%"
         :row-style="{height:'40px'}"
-        :cell-style="{padding:'0px'}"
+        :cell-style="{padding:'0px'}"        
+        :header-cell-style="{
+          color: '#fff',
+          background: '#0a3370',
+          fontWeight: '700',
+        }"
+        :highlight-current-row="false"
+        :row-class-name="tableRowClassName"
         border
-        stripe
         >
-          <el-table-column fixed prop="startTime" label="起始时间" min-width="100">
+          <el-table-column prop="startTime" label="起始时间" min-width="100">
           </el-table-column>
           <el-table-column prop="endTime" label="结束时间" min-width="100">
           </el-table-column>
@@ -29,7 +42,6 @@
           <el-table-column prop="dataName" label="数据名称" min-width="100">
           </el-table-column>
           <el-table-column
-            fixed="right"
             label="操作"
             width="100"
           >
@@ -124,9 +136,13 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
+import { mapMutations, mapGetters, mapState } from "vuex";
+import Charts from "@/components/Echarts.vue";
 export default {
   name:"AnalysisData",
+  components: {
+    Charts,
+  },
   data() {
     return {
       dialogVisible: false,
@@ -141,7 +157,50 @@ export default {
         module:"",
         dataName:"",
       },
-      tableData:[],
+      tableData:[
+        {
+          startTime:"2023-08-30 12:00:00",
+          endTime:"2023-09-15 12:00:00",
+          module:"EnvironmentalWeather",
+          dataName:"temperature"
+        },
+        {
+          startTime:"2023-08-21 11:00:00",
+          endTime:"2023-09-15 12:00:00",
+          module:"EnvironmentalWeather",
+          dataName:"temperature"
+        },
+        {
+          startTime:"2023-04-30 16:00:00",
+          endTime:"2023-09-15 12:00:00",
+          module:"EnvironmentalWeather",
+          dataName:"temperature"
+        },
+        {
+          startTime:"2023-04-30 16:00:00",
+          endTime:"2023-09-15 12:00:00",
+          module:"EnvironmentalWeather",
+          dataName:"temperature"
+        },
+        {
+          startTime:"2023-04-30 16:00:00",
+          endTime:"2023-09-15 12:00:00",
+          module:"EnvironmentalWeather",
+          dataName:"temperature"
+        },
+        {
+          startTime:"2023-04-30 16:00:00",
+          endTime:"2023-09-15 12:00:00",
+          module:"EnvironmentalWeather",
+          dataName:"temperature"
+        },
+        {
+          startTime:"2023-04-30 16:00:00",
+          endTime:"2023-09-15 12:00:00",
+          module:"EnvironmentalWeather",
+          dataName:"temperature"
+        },
+      ],
       rules:{
         dataName:[
           { required: true, message: '不能为空', trigger: 'blur' }
@@ -154,6 +213,10 @@ export default {
         ],
       },
     }
+  },
+  computed:{
+    ...mapState("analysis", ["data"]),
+    ...mapGetters("analysis", ["datas"]),
   },
   methods:{
     ...mapMutations("bread", ["SET_BREADS"]),
@@ -209,7 +272,16 @@ export default {
       .catch((err)=>{
         console.log(err);
       })
-    }
+    },
+    tableRowClassName({ row, rowIndex }) {
+      if (rowIndex % 2 == 0) {
+        console.log(row);
+        return "";
+      } 
+      else {
+        return "warning-row";
+      }
+    },
   },
   mounted() {
     console.log(this.$route);
@@ -223,21 +295,27 @@ export default {
 .main {
   margin: 0; 
   height: 99%;
-  border: 2px solid blue;
+  // border: 2px solid blue;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
-.up{
+.up {
   width: 98%;
   height: 50%;
-  border: 2px solid red;
+  // border: 2px solid red;
+  .chart {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
-.down{
+.down {
   width: 98%;
   height: 48%;
-  border: 2px solid red;
+  // border: 2px solid red;
   /* overflow: hidden; */
   display: flex; 
   flex-direction: column;
@@ -245,16 +323,104 @@ export default {
   justify-content: space-around;
 }
 .form{
-  border: 2px solid green;
+  // border: 2px solid green;
   width: 98%;
   height: 86%;
+  ::v-deep .el-table__header {
+    // background-color: red;
+  }
+  ::v-deep .el-table {
+    border: 2px solid #1d80ea;
+    box-shadow:8px 5px 10px -5px rgb(18, 94, 217);
+  }
+  ::v-deep .el-table--border::after, .el-table--group::after {
+    top : none;
+  }
+  ::v-deep .el-table th .el-table__cellk , .gutter {
+    border-bottom: none;
+  }
+  ::v-deep .el-table th,
+  ::v-deep .el-table tr,
+  ::v-deep .el-table td {
+    background-color:#0249b2;  // 背景透明
+    border: 0px;
+    color: #93dcfe;  // 修改字体颜色
+    font-size: 1rem;
+    height: 5px;
+    font-weight: Normal;
+  }
+  ::v-deep .el-table button {
+    color: rgb(255, 213, 0);
+    font-size: 0.8rem;
+  }
+  // 去掉最下面的那一条线
+  .el-table::before {
+    height: 0px;
+  }
+  // 修改表头样式-加边框
+  ::v-deep .el-table__header-wrapper {
+    border: solid 1px #04c2ed;
+    // box-sizing: border-box;
+  }
+  // 修改高亮当前行颜色
+  ::v-deep tbody tr:hover > td{
+    background: #397ccd !important;
+  }
+  // 滚动条样式
+  ::v-deep .el-table__body-wrapper::-webkit-scrollbar-track {
+    background-color: #063570;
+  }
+  ::v-deep .el-table__body-wrapper::-webkit-scrollbar {
+    // width: 10px;
+    opacity: 0.5;
+  }
+  ::v-deep .el-table__body-wrapper::-webkit-scrollbar-thumb {
+    border-radius: 15px;
+    background-color: #2455db;
+  }
+  ::v-deep  .el-table__cell.gutter {
+    background-color: #063570;
+  }
+
+  //修改行内线
+  ::v-deep .el-table td,.building-top .el-table th.is-leaf {
+    border-bottom:  1px solid #007ACC;
+ }
+   // 表格斑马自定义颜色
+   ::v-deep .el-table__row.warning-row > td {
+    background-color: #0336c3;
+  }
+  // 修改表格无数据背景，字体颜色
+  ::v-deep .el-table__empty-block {
+    background: #16203c;
+  }
+  ::v-deep .el-table__empty-text {
+    color: #ccc;
+  }
 }
 .downTop{
   width: 98%;
   height: 11%;
-  border: 2px solid green;
+  // border: 2px solid rgb(0, 255, 76);
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
+  justify-content: space-between;
+  .downTitle {
+    border: 2px solid rgb(78, 127, 251);
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: skewX(-20deg);
+    background-color: rgb(14, 64, 215);
+    box-shadow:8px 5px 10px -5px rgb(61, 180, 240);
+    span {
+      color: white;
+      font-size: calc(20px + 0.8vw);
+      font-family: "YouShe";
+      transform: skewX(20deg);
+    }
+  }  
 }
 .div{
     ::v-deep .el-dialog {
@@ -287,11 +453,5 @@ export default {
   }
 }
 
-// .form{  
-//   /deep/.el-table{
-//     .el-tabl-row{
-//       line-height: 30px;
-//     }
-//   }
-// }
+
 </style>
