@@ -172,13 +172,22 @@ export default {
                     },
                     toolbox: {
                         feature: {
-                            saveAsImage: {}
+                            saveAsImage: {},
+                            dataZoom: {
+                                yAxisIndex: 'none'
+                            },
                         },
                         right: '2%',
                         iconStyle: {
 
                         }
                     },
+                    dataZoom: [
+                        {
+                            type: 'inside',
+                            throttle: 20
+                        }
+                    ],
                     grid: {
                         left: '3%',
                         right: '4%',
