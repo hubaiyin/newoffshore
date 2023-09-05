@@ -229,7 +229,7 @@ export default {
     flex: 1;
     box-sizing: border-box;
     width: 99%;
-    border: 1px solid rebeccapurple;
+    // border: 1px solid rebeccapurple;
     margin-bottom: 0.2%;
     display: flex;
     flex-direction: column;
