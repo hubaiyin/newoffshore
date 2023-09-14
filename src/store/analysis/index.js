@@ -131,7 +131,7 @@ export default {
                         name: item.names[i],
                         type: 'line',
                         color: color[x] + ')',
-                        smooth: true,
+                        // smooth: true,
                         areaStyle: {
                             normal: {
                                 color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
