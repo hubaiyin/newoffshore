@@ -1,37 +1,37 @@
 <template>
   <div class="main">
-    <div class="up">    
-        <dv-border-box-11 class="table" title="历史数据">
-          <div class="chart">
-            <Charts :chartOption="datas[0]" />
-          </div>
-        </dv-border-box-11>
+    <div class="up">
+      <dv-border-box-11 class="table" title="历史数据">
+        <div class="chart">
+          <Charts :chartOption="datas[0]" />
+        </div>
+      </dv-border-box-11>
     </div>
     <div class="down">
       <div class="downTop">
-          <div class="downTitle">
-            <span>数据列表</span>
-          </div>
-          <div class="btn">
-            <el-button type="warning" @click="dialogVisible = true">
-              新增数据
-            </el-button>
-          </div>
+        <div class="downTitle">
+          <span>数据列表</span>
+        </div>
+        <div class="btn">
+          <el-button type="warning" @click="dialogVisible = true">
+            新增数据
+          </el-button>
+        </div>
       </div>
       <div class="form">
         <el-table
-        :data="tableData"
-        height="100%"
-        :row-style="{height:'40px'}"
-        :cell-style="{padding:'0px'}"        
-        :header-cell-style="{
-          color: '#fff',
-          background: '#0a3370',
-          fontWeight: '700',
-        }"
-        :highlight-current-row="false"
-        :row-class-name="tableRowClassName"
-        border
+          :data="tableData"
+          height="100%"
+          :row-style="{ height: '40px' }"
+          :cell-style="{ padding: '0px' }"
+          :header-cell-style="{
+            color: '#fff',
+            background: '#0a3370',
+            fontWeight: '700',
+          }"
+          :highlight-current-row="false"
+          :row-class-name="tableRowClassName"
+          border
         >
           <el-table-column prop="startTime" label="起始时间" min-width="100">
           </el-table-column>
@@ -41,12 +41,14 @@
           </el-table-column>
           <el-table-column prop="dataName" label="数据名称" min-width="100">
           </el-table-column>
-          <el-table-column
-            label="操作"
-            width="100"
-          >
+          <el-table-column label="操作" width="100">
             <template slot-scope="scope">
-              <el-button @click.native.prevent="deleteRow(scope.$index, tableData)" type="text" size="small">删除</el-button>
+              <el-button
+                @click.native.prevent="deleteRow(scope.$index, tableData)"
+                type="text"
+                size="small"
+                >删除</el-button
+              >
             </template>
           </el-table-column>
         </el-table>
@@ -68,10 +70,16 @@
         >
           <el-form-item label="数据类别" prop="dataModule">
             <el-select v-model="formData.dataModule" placeholder="请选择">
-              <el-option label="环境气象" value="EnvironmentalWeather"></el-option>
+              <el-option
+                label="环境气象"
+                value="EnvironmentalWeather"
+              ></el-option>
               <el-option label="海洋水文" value="MarineHydrology"></el-option>
               <el-option label="主体结构" value="MainStructure"></el-option>
-              <el-option label="光伏组件" value="PhotovoltaicModules"></el-option>
+              <el-option
+                label="光伏组件"
+                value="PhotovoltaicModules"
+              ></el-option>
               <el-option label="电气系统" value="ElectricalSystem"></el-option>
             </el-select>
           </el-form-item>
@@ -82,11 +90,15 @@
               type="datetimerange"
               start-placeholder="起始时间"
               range-separator="-"
-              end-placeholder="结束时间" 
+              end-placeholder="结束时间"
             >
             </el-date-picker>
           </el-form-item>
-          <el-form-item label="请选择数据：" v-show="this.formData.dataModule === 'EnvironmentalWeather'" prop="dataName">
+          <el-form-item
+            label="请选择数据："
+            v-show="this.formData.dataModule === 'EnvironmentalWeather'"
+            prop="dataName"
+          >
             <el-radio-group v-model="formData.dataName">
               <el-radio label="temperature">温度</el-radio>
               <el-radio label="radiation">太阳辐照度</el-radio>
@@ -94,8 +106,12 @@
               <el-radio label="humidity">环境湿度</el-radio>
               <el-radio label="windSpeed">风速</el-radio>
             </el-radio-group>
-          </el-form-item>        
-          <el-form-item label="请选择数据：" v-show="this.formData.dataModule === 'MarineHydrology'" prop="dataName">
+          </el-form-item>
+          <el-form-item
+            label="请选择数据："
+            v-show="this.formData.dataModule === 'MarineHydrology'"
+            prop="dataName"
+          >
             <el-radio-group v-model="formData.dataName">
               <el-radio label="flowSpeed">流速</el-radio>
               <el-radio label="waveHeight">波高</el-radio>
@@ -108,7 +124,11 @@
               <el-radio label="ph">PH值</el-radio>
             </el-radio-group>
           </el-form-item>
-          <el-form-item label="请选择数据：" v-show="this.formData.dataModule === 'MainStructure'" prop="dataName">
+          <el-form-item
+            label="请选择数据："
+            v-show="this.formData.dataModule === 'MainStructure'"
+            prop="dataName"
+          >
             <el-radio-group v-model="formData.dataName">
               <el-radio label="mainFloatingTubeStress">主浮管应力</el-radio>
               <el-radio label="cableForce">浮体息缆力</el-radio>
@@ -116,15 +136,19 @@
               <el-radio label="xdisplacement">位移X</el-radio>
               <el-radio label="ydisplacement">位移Y</el-radio>
             </el-radio-group>
-          </el-form-item>        
-          <el-form-item label="请选择数据：" v-show="this.formData.dataModule === 'PhotovoltaicModules'" prop="dataName">
+          </el-form-item>
+          <el-form-item
+            label="请选择数据："
+            v-show="this.formData.dataModule === 'PhotovoltaicModules'"
+            prop="dataName"
+          >
             <el-radio-group v-model="formData.dataName">
               <el-radio label="backplaneTemperature">背板温度</el-radio>
               <el-radio label="voltage">电压</el-radio>
               <el-radio label="electricCurrent">电流</el-radio>
               <el-radio label="outputPower">功率</el-radio>
             </el-radio-group>
-          </el-form-item>        
+          </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
           <el-button @click="handleClose()">取 消</el-button>
@@ -139,99 +163,125 @@
 import { mapMutations, mapGetters, mapState } from "vuex";
 import Charts from "@/components/Echarts.vue";
 export default {
-  name:"AnalysisData",
+  name: "AnalysisData",
   components: {
     Charts,
   },
   data() {
     return {
       dialogVisible: false,
-      formData:{
-        dataModule:"",
-        dataName:"",
-        timePeriod:"",
+      formData: {
+        dataModule: "",
+        dataName: "",
+        timePeriod: "",
       },
-      params:{
-        startTime:"",
-        endTime:"",
-        module:"",
-        dataName:"",
+      params: {
+        startTime: "",
+        endTime: "",
+        module: "",
+        dataName: "",
       },
-      tableData:[
+      tableData: [
         {
-          startTime:"2023-08-30 12:00:00",
-          endTime:"2023-09-15 12:00:00",
-          module:"EnvironmentalWeather",
-          dataName:"temperature"
+          startTime: "2023-08-30 12:00:00",
+          endTime: "2023-09-15 12:00:00",
+          module: "EnvironmentalWeather",
+          dataName: "temperature",
         },
         {
-          startTime:"2023-08-21 11:00:00",
-          endTime:"2023-09-15 12:00:00",
-          module:"EnvironmentalWeather",
-          dataName:"temperature"
+          startTime: "2023-08-21 11:00:00",
+          endTime: "2023-09-15 12:00:00",
+          module: "EnvironmentalWeather",
+          dataName: "temperature",
         },
         {
-          startTime:"2023-04-30 16:00:00",
-          endTime:"2023-09-15 12:00:00",
-          module:"EnvironmentalWeather",
-          dataName:"temperature"
+          startTime: "2023-04-30 16:00:00",
+          endTime: "2023-09-15 12:00:00",
+          module: "EnvironmentalWeather",
+          dataName: "temperature",
         },
         {
-          startTime:"2023-04-30 16:00:00",
-          endTime:"2023-09-15 12:00:00",
-          module:"EnvironmentalWeather",
-          dataName:"temperature"
+          startTime: "2023-04-30 16:00:00",
+          endTime: "2023-09-15 12:00:00",
+          module: "EnvironmentalWeather",
+          dataName: "temperature",
         },
         {
-          startTime:"2023-04-30 16:00:00",
-          endTime:"2023-09-15 12:00:00",
-          module:"EnvironmentalWeather",
-          dataName:"temperature"
+          startTime: "2023-04-30 16:00:00",
+          endTime: "2023-09-15 12:00:00",
+          module: "EnvironmentalWeather",
+          dataName: "temperature",
         },
         {
-          startTime:"2023-04-30 16:00:00",
-          endTime:"2023-09-15 12:00:00",
-          module:"EnvironmentalWeather",
-          dataName:"temperature"
+          startTime: "2023-04-30 16:00:00",
+          endTime: "2023-09-15 12:00:00",
+          module: "EnvironmentalWeather",
+          dataName: "temperature",
         },
         {
-          startTime:"2023-04-30 16:00:00",
-          endTime:"2023-09-15 12:00:00",
-          module:"EnvironmentalWeather",
-          dataName:"temperature"
+          startTime: "2023-04-30 16:00:00",
+          endTime: "2023-09-15 12:00:00",
+          module: "EnvironmentalWeather",
+          dataName: "temperature",
+        },
+        {
+          startTime: "2023-04-30 16:00:00",
+          endTime: "2023-09-15 12:00:00",
+          module: "EnvironmentalWeather",
+          dataName: "temperature",
+        },
+        {
+          startTime: "2023-04-30 16:00:00",
+          endTime: "2023-09-15 12:00:00",
+          module: "EnvironmentalWeather",
+          dataName: "temperature",
+        },
+        {
+          startTime: "2023-04-30 16:00:00",
+          endTime: "2023-09-15 12:00:00",
+          module: "EnvironmentalWeather",
+          dataName: "temperature",
+        },
+        {
+          startTime: "2023-04-30 16:00:00",
+          endTime: "2023-09-15 12:00:00",
+          module: "EnvironmentalWeather",
+          dataName: "temperature",
+        },
+        {
+          startTime: "2023-04-30 16:00:00",
+          endTime: "2023-09-15 12:00:00",
+          module: "EnvironmentalWeather",
+          dataName: "temperature",
         },
       ],
-      rules:{
-        dataName:[
-          { required: true, message: '不能为空', trigger: 'blur' }
+      rules: {
+        dataName: [{ required: true, message: "不能为空", trigger: "blur" }],
+        dataModule: [
+          { required: true, message: "不能为空", trigger: "select" },
         ],
-        dataModule:[
-          { required: true, message: '不能为空', trigger: 'select' }
-        ],
-        timePeriod:[
-          { required: true, message: '不能为空', trigger: 'blur' }
-        ],
+        timePeriod: [{ required: true, message: "不能为空", trigger: "blur" }],
       },
-    }
+    };
   },
-  computed:{
+  computed: {
     ...mapState("analysis", ["data"]),
     ...mapGetters("analysis", ["datas"]),
   },
-  methods:{
+  methods: {
     ...mapMutations("bread", ["SET_BREADS"]),
-    handleClose(){
+    handleClose() {
       this.dialogVisible = false;
       this.formData = {
-            module: "",
-            dataName:"",
-            timePeriod:"",
-          }
+        module: "",
+        dataName: "",
+        timePeriod: "",
+      };
       this.$refs.ruleForm.resetFields();
     },
-    submit(){
-      this.$refs.ruleForm.validate((valid)=>{
-        if(valid){
+    submit() {
+      this.$refs.ruleForm.validate((valid) => {
+        if (valid) {
           this.params.startTime = this.formData.timePeriod[0];
           this.params.endTime = this.formData.timePeriod[1];
           this.params.module = this.formData.dataModule;
@@ -239,46 +289,44 @@ export default {
           // this.getData(this.params);
           this.tableData.push(this.params);
           this.$message({
-            message:"添加成功！",
-            type:"success"
-          })
+            message: "添加成功！",
+            type: "success",
+          });
           this.formData = {
             module: "",
-            dataName:"",
-            timePeriod:"",
-          }
+            dataName: "",
+            timePeriod: "",
+          };
           this.params = {
-            startTime:"",
-            endTime:"",
-            module:"",
-            dataName:"",
-          }
+            startTime: "",
+            endTime: "",
+            module: "",
+            dataName: "",
+          };
           this.$refs.ruleForm.resetFields();
           this.dialogVisible = false;
-        } 
-        else {
+        } else {
           this.$message({
-            message:"请检查是否填写完整！",
-            type:"warning"
-          })
+            message: "请检查是否填写完整！",
+            type: "warning",
+          });
         }
-      })
+      });
     },
-    deleteRow(index, rows){
+    deleteRow(index, rows) {
       this.$confirm("确认删除该条数据？")
-      .then(()=>{
-        rows.splice(index, 1);
-      })
-      .catch((err)=>{
-        console.log(err);
-      })
+        .then(() => {
+          rows.splice(index, 1);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     tableRowClassName({ row, rowIndex }) {
       if (rowIndex % 2 == 0) {
         console.log(row);
         return "";
-      } 
-      else {
+      } else {
         return "warning-row";
       }
     },
@@ -287,13 +335,12 @@ export default {
     console.log(this.$route);
     this.SET_BREADS(this);
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
-
 .main {
-  margin: 0; 
+  margin: 0;
   height: 99%;
   // border: 2px solid blue;
   display: flex;
@@ -317,34 +364,37 @@ export default {
   height: 48%;
   // border: 2px solid red;
   /* overflow: hidden; */
-  display: flex; 
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
 }
-.form{
+.form {
   // border: 2px solid green;
   width: 98%;
   height: 86%;
-  ::v-deep .el-table__header {
+  /* ::v-deep .el-table__header {
     // background-color: red;
-  }
+  } */
   ::v-deep .el-table {
     border: 2px solid #1d80ea;
-    box-shadow:8px 5px 10px -5px rgb(18, 94, 217);
+    box-shadow: 8px 5px 10px -5px rgb(18, 94, 217);
   }
-  ::v-deep .el-table--border::after, .el-table--group::after {
-    top : none;
+  ::v-deep .el-table--border::after,
+  .el-table--group::after {
+    // top: none;
+    height: 0%;
   }
-  ::v-deep .el-table th .el-table__cellk , .gutter {
+  ::v-deep .el-table th .el-table__cellk,
+  .gutter {
     border-bottom: none;
   }
   ::v-deep .el-table th,
   ::v-deep .el-table tr,
   ::v-deep .el-table td {
-    background-color:#0249b2;  // 背景透明
+    background-color: #0249b2; // 背景透明
     border: 0px;
-    color: #93dcfe;  // 修改字体颜色
+    color: #93dcfe; // 修改字体颜色
     font-size: 1rem;
     height: 5px;
     font-weight: Normal;
@@ -363,7 +413,7 @@ export default {
     // box-sizing: border-box;
   }
   // 修改高亮当前行颜色
-  ::v-deep tbody tr:hover > td{
+  ::v-deep tbody tr:hover > td {
     background: #397ccd !important;
   }
   // 滚动条样式
@@ -378,16 +428,17 @@ export default {
     border-radius: 15px;
     background-color: #2455db;
   }
-  ::v-deep  .el-table__cell.gutter {
+  ::v-deep .el-table__cell.gutter {
     background-color: #063570;
   }
 
   //修改行内线
-  ::v-deep .el-table td,.building-top .el-table th.is-leaf {
-    border-bottom:  1px solid #007ACC;
- }
-   // 表格斑马自定义颜色
-   ::v-deep .el-table__row.warning-row > td {
+  ::v-deep .el-table td,
+  .building-top .el-table th.is-leaf {
+    border-bottom: 1px solid #007acc;
+  }
+  // 表格斑马自定义颜色
+  ::v-deep .el-table__row.warning-row > td {
     background-color: #0336c3;
   }
   // 修改表格无数据背景，字体颜色
@@ -398,7 +449,7 @@ export default {
     color: #ccc;
   }
 }
-.downTop{
+.downTop {
   width: 98%;
   height: 11%;
   // border: 2px solid rgb(0, 255, 76);
@@ -413,17 +464,17 @@ export default {
     align-items: center;
     transform: skewX(-20deg);
     background-color: rgb(14, 64, 215);
-    box-shadow:8px 5px 10px -5px rgb(61, 180, 240);
+    box-shadow: 8px 5px 10px -5px rgb(61, 180, 240);
     span {
       color: white;
       font-size: calc(20px + 0.8vw);
       font-family: "YouShe";
       transform: skewX(20deg);
     }
-  }  
+  }
 }
-.div{
-    ::v-deep .el-dialog {
+.div {
+  ::v-deep .el-dialog {
     margin: 0 auto;
     top: 10%;
     display: flex;
@@ -446,12 +497,10 @@ export default {
       flex-wrap: wrap;
       padding-top: 12px;
       padding-left: 10px;
-      .el-radio__label {
+      /* .el-radio__label {
         // background-color:skyblue;
-      }
+      } */
     }
   }
 }
-
-
 </style>
