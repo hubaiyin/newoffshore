@@ -9,6 +9,10 @@ import VueRouter from 'vue-router'
 import router from './router/index'
 import './assets/style/font1.less'
 
+window._AMapSecurityConfig = {
+  securityJsCode: 'b387338487cee9e1a35360c3210cca25'
+}
+
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)
