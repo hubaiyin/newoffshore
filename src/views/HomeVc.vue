@@ -1,11 +1,9 @@
 <template>
   <div class="surface">
     <div class="left">
-      <div class="header">
-        <img src="../assets//image/locate.png" alt="" />
-      </div>
+      <div class="header"></div>
       <div class="footer">
-        <map-vc></map-vc>
+        <map-vc :AMap="AMap"></map-vc>
       </div>
     </div>
     <div class="center">
@@ -25,7 +23,7 @@
 </template>
 <script>
 import MapVc from "@/components/MapVc.vue";
-// import AMapLoader from "@amap/amap-jsapi-loader";
+import AMapLoader from "@amap/amap-jsapi-loader";
 // import * as THREE from "three";
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 // import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
@@ -41,12 +39,31 @@ export default {
       loader: null,
       dom: null,
       weather: null,
+      AMap: null,
     };
   },
   methods: {
-    getWeather() {},
+    getWeather() {
+      this.weather.getLive("杭州市", (err, data) => {
+        console.log(err, data);
+      });
+    },
   },
-  mounted() {
+  async mounted() {
+    await AMapLoader.load({
+      key: "593c04957cb7cfa503dd408e55afdbd4",
+      version: "1.4.0",
+      resizeEnable: true,
+      zoomEnable: false,
+      dragEnable: false,
+    }).then((AMap) => {
+      this.AMap = AMap;
+      this.AMap.plugin("AMap.Weather", () => {
+        this.weather = new AMap.Weather();
+      });
+      this.getWeather();
+    });
+
     //   this.dom = this.$refs.model;
     //   // console.log(dom);
     //   this.createCamera();
@@ -141,6 +158,9 @@ export default {
     .head {
       height: 6.5%;
       background: red;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
     }
     .showModel {
       height: 72.5%;
