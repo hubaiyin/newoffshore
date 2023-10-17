@@ -96,6 +96,8 @@ export default {
   display: flex;
   flex-direction: column;
   background-image: url("../assets/image/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
   .header {
     background: linear-gradient(#193eae, #223da7);
   }
