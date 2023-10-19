@@ -1,7 +1,7 @@
 <template>
   <div class="date-1">
     <div class="header">
-      <dv-border-box-12 :color="['#819DEC' ,'#81deec']" backgroundColor="none" 
+      <dv-border-box-12 :color="['#819DEC', '#81deec']" backgroundColor="none"
         ><div class="data">
           <el-radio-group v-model="tabPosition" size="medium" fill="#4165db">
             <el-radio-button
@@ -55,7 +55,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scpoed>
 .header {
   // border: 2px solid green;
   width: 100%;
@@ -66,6 +66,7 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: column;
+  background: linear-gradient(#193eae, #0b31a3, #132d78);
 }
 .data {
   // background-color: red;
