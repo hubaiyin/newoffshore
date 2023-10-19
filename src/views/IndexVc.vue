@@ -43,6 +43,7 @@
       <div class="container">
         <router-view></router-view>
       </div>
+      <img src="../assets/image/circle.png" alt="" class="img" />
     </div>
   </dv-full-screen-container>
 </template>
@@ -97,7 +98,15 @@ export default {
   flex-direction: column;
   background-image: url("../assets/image/background.png");
   background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
+  .img {
+    position: absolute;
+    z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 9%;
+  }
   .header {
     background: linear-gradient(#193eae, #223da7);
   }
@@ -105,6 +114,7 @@ export default {
   .middle,
   .container {
     box-sizing: border-box;
+    z-index: 999;
   }
 
   .header {

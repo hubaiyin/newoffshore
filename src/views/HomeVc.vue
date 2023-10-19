@@ -4,8 +4,26 @@
       <div class="header">
         <dv-border-box-12>
           <div class="eletronic">
-            <div class="header"></div>
-            <div class="footer"></div>
+            <div class="head">
+              <div class="leftIcon"></div>
+              <div class="rightInform">
+                <div class="top">总发电量</div>
+                <div class="bottom">
+                  <span class="number">23,984,032</span
+                  ><span class="unit">瓦</span>
+                </div>
+              </div>
+            </div>
+            <div class="foot">
+              <div class="output">
+                <strong>日发电量：</strong><span class="number">23,984,032</span
+                ><span class="unit">瓦</span>
+              </div>
+              <div class="output">
+                <strong>月发电量：</strong><span class="number">23,984,032</span
+                ><span class="unit">瓦</span>
+              </div>
+            </div>
           </div>
         </dv-border-box-12>
       </div>
@@ -55,7 +73,9 @@
                 <div class="leftchart">
                   <blue-line></blue-line>
                 </div>
-                <div class="rightchart"></div>
+                <div class="rightchart">
+                  <segmented-pie></segmented-pie>
+                </div>
               </div>
             </div>
           </div>
@@ -160,12 +180,13 @@ import AMapLoader from "@amap/amap-jsapi-loader";
 import BorderBar from "@/components/BorderBar.vue";
 import BlueLine from "@/components/BlueLine.vue";
 import ProcessChart from "@/components/ProcessChart.vue";
+import SegmentedPie from "@/components/SegmentedPie.vue";
 // import * as THREE from "three";
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 // import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 export default {
   name: "HomeVc",
-  components: { MapVc, BorderBar, BlueLine, ProcessChart },
+  components: { MapVc, BorderBar, BlueLine, ProcessChart, SegmentedPie },
   data() {
     return {
       scene: null,
@@ -200,8 +221,8 @@ export default {
     //     0.1,
     //     1000
     //   );
-    //   this.camera.position.z = 30;
-    //   this.camera.position.y = 45;
+    //   this.camera.position.z = 22;
+    //   this.camera.position.y = 42;
     // },
     // createLight() {
     //   // 环境光
@@ -237,8 +258,7 @@ export default {
       this.getWeather();
     });
 
-    this.dom = this.$refs.model;
-    // console.log(dom);
+    // this.dom = this.$refs.model;
     // this.createCamera();
     // this.scene = new THREE.Scene();
     // this.loader = new GLTFLoader();
@@ -276,7 +296,7 @@ export default {
   .left {
     width: 22%;
     .header {
-      height: 26%;
+      height: 20%;
       width: 100%;
       ::v-deep .dv-border-box-12 .border-box-content {
         display: flex !important;
@@ -285,12 +305,68 @@ export default {
         .eletronic {
           height: 94%;
           width: 92%;
-          background: skyblue;
+          // background: skyblue;
+          .head {
+            height: 46%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid #7cf3e5;
+            .leftIcon {
+              height: 100%;
+              width: 20%;
+            }
+            .rightInform {
+              height: 100%;
+              // background: pink;
+              width: 78%;
+              display: flex;
+              flex-direction: column;
+              color: #7cf3e5;
+              .top {
+                height: 48%;
+                width: 100%;
+                font-size: calc(20px + 0.6vw);
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+              }
+              .bottom {
+                height: 43%;
+                width: 100%;
+                font-size: calc(22px + 0.3vw);
+                display: flex;
+                align-items: baseline;
+                .unit {
+                  font-size: calc(12px + 0.3vw);
+                }
+              }
+            }
+          }
+          .foot {
+            height: 46%;
+            width: 100%;
+            // background: #000;
+            box-sizing: border-box;
+            padding: 2% 0;
+            .output {
+              color: #ffffff;
+              height: 48%;
+              width: 100%;
+              font-size: calc(20px + 0.2vw);
+              .number {
+                font-size: calc(18px + 0.2vw);
+              }
+              .unit {
+                font-size: calc(12px + 0.2vw);
+              }
+            }
+          }
         }
       }
     }
     .footer {
-      height: 73%;
+      height: 78%;
       width: 100%;
       ::v-deep .dv-border-box-12 .border-box-content {
         display: flex !important;
@@ -394,6 +470,7 @@ export default {
             display: flex;
             flex-direction: column;
             .top {
+              // background: skyblue;
               display: flex;
               width: 70%;
               justify-content: space-around;
@@ -408,12 +485,14 @@ export default {
               display: flex;
               justify-content: space-between;
               .leftchart {
-                width: 74%;
+                width: 77%;
                 height: 100%;
+                // background: #fff;
               }
               .rightchart {
-                width: 25%;
+                width: 22%;
                 height: 100%;
+                // background: #fff;
               }
             }
           }
