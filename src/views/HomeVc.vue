@@ -244,6 +244,9 @@ export default {
     // },
   },
   async mounted() {
+    window._AMapSecurityConfig = {
+      securityJsCode: "b387338487cee9e1a35360c3210cca25",
+    };
     await AMapLoader.load({
       key: "593c04957cb7cfa503dd408e55afdbd4",
       version: "1.4.0",
