@@ -181,9 +181,9 @@ import BorderBar from "@/components/BorderBar.vue";
 import BlueLine from "@/components/BlueLine.vue";
 import ProcessChart from "@/components/ProcessChart.vue";
 import SegmentedPie from "@/components/SegmentedPie.vue";
-// import * as THREE from "three";
-// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-// import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+/* import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"; */
 export default {
   name: "HomeVc",
   components: { MapVc, BorderBar, BlueLine, ProcessChart, SegmentedPie },
@@ -209,39 +209,39 @@ export default {
         this.weatherString = data.weather;
       });
     },
-    // animate() {
-    //   requestAnimationFrame(this.animate);
-    //   this.controls.update();
-    //   this.renderer.render(this.scene, this.camera);
-    // },
-    // createCamera() {
-    //   this.camera = new THREE.PerspectiveCamera(
-    //     75,
-    //     this.dom.clientWidth / this.dom.clientHeight,
-    //     0.1,
-    //     1000
-    //   );
-    //   this.camera.position.z = 22;
-    //   this.camera.position.y = 42;
-    // },
-    // createLight() {
-    //   // 环境光
-    //   const ambientLight = new THREE.AmbientLight(0xffffff, 1.5); // 创建环境光
-    //   this.scene.add(ambientLight); // 将环境光添加到场景
-    //   const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5); // 创建方向光源
-    //   directionalLight.position.set(10, 0, 10);
-    //   this.scene.add(directionalLight);
-    //   const spotLight = new THREE.SpotLight(0xffffff, 0.5); // 创建聚光灯
-    //   spotLight.position.set(10, 0, 10);
-    //   spotLight.castShadow = true;
-    //   this.scene.add(spotLight);
-    // },
-    // createRenderer() {
-    //   this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    //   this.renderer.setSize(this.dom.clientWidth, this.dom.clientHeight);
-    //   // this.renderer.setClearColor(0x3f3f3f, 1);
-    //   this.dom.appendChild(this.renderer.domElement);
-    // },
+    /* animate() {
+      requestAnimationFrame(this.animate);
+      this.controls.update();
+      this.renderer.render(this.scene, this.camera);
+    },
+    createCamera() {
+      this.camera = new THREE.PerspectiveCamera(
+        75,
+        this.dom.clientWidth / this.dom.clientHeight,
+        0.1,
+        1000
+      );
+      this.camera.position.z = 22;
+      this.camera.position.y = 42;
+    },
+    createLight() {
+      // 环境光
+      const ambientLight = new THREE.AmbientLight(0xffffff, 1.5); // 创建环境光
+      this.scene.add(ambientLight); // 将环境光添加到场景
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5); // 创建方向光源
+      directionalLight.position.set(10, 0, 10);
+      this.scene.add(directionalLight);
+      const spotLight = new THREE.SpotLight(0xffffff, 0.5); // 创建聚光灯
+      spotLight.position.set(10, 0, 10);
+      spotLight.castShadow = true;
+      this.scene.add(spotLight);
+    },
+    createRenderer() {
+      this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      this.renderer.setSize(this.dom.clientWidth, this.dom.clientHeight);
+      // this.renderer.setClearColor(0x3f3f3f, 1);
+      this.dom.appendChild(this.renderer.domElement);
+    }, */
   },
   async mounted() {
     window._AMapSecurityConfig = {
@@ -272,6 +272,8 @@ export default {
     //     this.scene.add(...children);
     //   }
     // );
+    // const axesHelper = new THREE.AxesHelper(5);
+    // this.scene.add(axesHelper);
     // this.createLight();
     // this.createRenderer();
     // this.controls = new OrbitControls(this.camera, this.renderer.domElement);

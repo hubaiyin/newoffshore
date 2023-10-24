@@ -147,6 +147,8 @@ export default {
   flex-direction: column;
   align-items: center;
   color: #e9e7e7;
+  padding-bottom: 0.2%;
+  box-sizing: border-box;
   .header {
     height: 5%;
     min-height: 42px;
@@ -269,41 +271,41 @@ export default {
     ::v-deep .el-pagination .btn-next {
       background-color: rgba(0, 0, 0, 0) !important;
       color: #fff;
-      height: 24px;
-      line-height: 24px;
+      height: 28px;
+      line-height: 28px;
     }
 
     ::v-deep .el-pagination .btn-prev {
       background-color: rgba(0, 0, 0, 0) !important;
       color: #fff;
-      height: 24px;
-      line-height: 24px;
+      height: 28px;
+      line-height: 28px;
     }
 
     ::v-deep .el-pagination button:disabled {
       background-color: rgba(0, 0, 0, 0) !important;
-      color: #b4b5b7;
+      color: #b4b5b7 !important;
     }
 
     ::v-deep .el-pager li {
       background: rgba(0, 0, 0, 0) !important;
-      font-size: 18px !important;
-      height: 24px;
-      line-height: 24px;
+      font-size: 22px !important;
+      height: 28px;
+      line-height: 28px;
       color: #ffffff;
     }
 
     ::v-deep .el-pagination .btn-prev .el-icon {
-      font-size: 18px !important;
-      height: 24px;
-      line-height: 24px;
+      font-size: 30px !important;
+      height: 28px;
+      line-height: 28px;
       // color: #fff;
     }
     ::v-deep .el-pagination .btn-next .el-icon {
-      font-size: 18px !important;
-      height: 24px;
-      line-height: 24px;
-      color: #fff;
+      font-size: 30px !important;
+      height: 28px;
+      line-height: 28px;
+      // color: #fff;
     }
     ::v-deep .el-pager li.active {
       color: #409eff;
