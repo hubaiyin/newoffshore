@@ -48,6 +48,53 @@
           </div>
         </dv-border-box-12>
       </div>
+      <div class="header">
+        <dv-border-box-12>
+          <div class="eletronic">
+            <div class="head">
+              <div class="leftIcon"></div>
+              <div class="rightInform">
+                <div class="top">总发电量</div>
+                <div class="bottom">
+                  <span class="number">23,984,032</span
+                  ><span class="unit">瓦</span>
+                </div>
+              </div>
+            </div>
+            <div class="foot">
+              <div class="output">
+                <strong>日发电量：</strong><span class="number">23,984,032</span
+                ><span class="unit">瓦</span>
+              </div>
+              <div class="output">
+                <strong>月发电量：</strong><span class="number">23,984,032</span
+                ><span class="unit">瓦</span>
+              </div>
+            </div>
+          </div>
+        </dv-border-box-12>
+      </div>
+      <div class="footer">
+        <dv-border-box-12>
+          <div class="mapContainer">
+            <div class="inform">
+              <div class="title">项目信息</div>
+              <div class="content">
+                <div class="text">项目名称：天津市海上光伏可视化项目</div>
+                <div class="text">所在城市：天津市</div>
+                <div class="text">详细地址：西青区宾水西道391号</div>
+                <div class="text">项目编号：TJ20230917</div>
+                <div class="text">占地面积：6239公顷</div>
+                <div class="text">安装角度：北偏西38°</div>
+                <div class="text">布置方式：竖向布置</div>
+              </div>
+            </div>
+            <div class="map">
+              <map-vc :AMap="AMap"></map-vc>
+            </div>
+          </div>
+        </dv-border-box-12>
+      </div>
     </div>
     <div class="center">
       <div class="head">
