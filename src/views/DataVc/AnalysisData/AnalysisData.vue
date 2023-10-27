@@ -161,7 +161,7 @@
 
 <script>
 import { mapMutations, mapGetters, mapState } from "vuex";
-import Charts from "@/components/Echarts.vue";
+import Charts from "@/components/Charts/Echarts.vue";
 export default {
   name: "AnalysisData",
   components: {

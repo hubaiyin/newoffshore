@@ -72,9 +72,9 @@
 </template>
 
 <script>
-import BreadCrumb from "@/components/BreadCrumb.vue";
+import BreadCrumb from "@/components/Charts/BreadCrumb.vue";
 import { mapGetters, mapMutations, mapState } from "vuex";
-import Charts from "@/components/Echarts.vue";
+import Charts from "@/components/Charts/Echarts.vue";
 export default {
   name: "RealTime",
   components: { BreadCrumb, Charts },

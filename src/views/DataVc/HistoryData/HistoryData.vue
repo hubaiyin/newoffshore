@@ -103,7 +103,7 @@
   </div>
 </template>
 <script>
-import Charts from "@/components/Echarts.vue";
+import Charts from "@/components/Charts/Echarts.vue";
 import { mapGetters, mapState } from "vuex";
 export default {
   name: "HistoryData",

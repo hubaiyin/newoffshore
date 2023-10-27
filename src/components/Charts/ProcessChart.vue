@@ -34,7 +34,7 @@ export default {
             name: "装备制造",
             type: "pie",
             // clockwise: false,
-            radius: [60, 70],
+            radius: ["62%", "74%"],
             itemStyle: {
               color: this.colors[this.index][0],
               shadowColor: this.colors[this.index][0],
