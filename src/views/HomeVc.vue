@@ -161,7 +161,12 @@
           <div class="chart">
             <div
               class="main"
-              style="display: flex; justify-content: space-around"
+              style="
+                display: flex;
+                justify-content: space-around;
+                align-item: center;
+              "
+              ref="main"
             >
               <div class="charts" v-for="(item, index) in 3" :key="index">
                 <process-chart :index="index"></process-chart>
@@ -177,10 +182,10 @@
 <script>
 import MapVc from "@/components/MapVc.vue";
 import AMapLoader from "@amap/amap-jsapi-loader";
-import BorderBar from "@/components/BorderBar.vue";
-import BlueLine from "@/components/BlueLine.vue";
-import ProcessChart from "@/components/ProcessChart.vue";
-import SegmentedPie from "@/components/SegmentedPie.vue";
+import BorderBar from "@/components/Charts/BorderBar.vue";
+import BlueLine from "@/components/Charts/BlueLine.vue";
+import ProcessChart from "@/components/Charts/ProcessChart.vue";
+import SegmentedPie from "@/components/Charts/SegmentedPie.vue";
 /* import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"; */
@@ -189,6 +194,7 @@ export default {
   components: { MapVc, BorderBar, BlueLine, ProcessChart, SegmentedPie },
   data() {
     return {
+      pieHeight: 0,
       scene: null,
       camera: null,
       renderer: null,
@@ -244,6 +250,7 @@ export default {
     }, */
   },
   async mounted() {
+    this.pieHeight = this.$refs.main.clientWidth * 0.33;
     window._AMapSecurityConfig = {
       securityJsCode: "b387338487cee9e1a35360c3210cca25",
     };

@@ -44,11 +44,12 @@ export default {
 
         series: [
           {
-            label: {
-              show: true,
-              position: "right",
-              fontSize: 16,
-            },
+            // label: {
+            //   show: true,
+            //   position: "right",
+            //   fontSize: 16,
+            //   color: "#000",
+            // },
             name: "销量：",
             yAxisIndex: 0,
             type: "bar",
