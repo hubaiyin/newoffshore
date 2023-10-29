@@ -49,7 +49,7 @@ export default {
           {
             name: "吃猪肉频率",
             type: "pie",
-            radius: ["62%", "74%"],
+            radius: ["64%", "78%"],
             silent: true,
             clockwise: true,
             startAngle: 90,

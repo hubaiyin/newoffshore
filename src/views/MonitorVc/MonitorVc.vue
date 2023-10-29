@@ -1,5 +1,17 @@
 <template>
   <div class="device" @click="reChoose">
+    <check-monitor
+      :dialogVisible="isCheck"
+      :index="index"
+      v-if="isCheck"
+      @close="closeCheck"
+    ></check-monitor>
+    <edit-device
+      :dialogVisible="isEdit"
+      :index="index"
+      v-if="isEdit"
+      @close="closeEdit"
+    ></edit-device>
     <div class="main">
       <div class="left">
         <div class="header">
@@ -18,7 +30,7 @@
               <div class="content" :style="{ left: blueBoxWidth + 20 + 'px' }">
                 <div class="CN">监控列表</div>
                 &nbsp;&nbsp;&nbsp;
-                <div class="EN">MONITOR LIST</div>
+                <div class="EN">DEVICE LIST</div>
               </div>
             </div>
             <div class="small"></div>
@@ -54,7 +66,7 @@
               >
               </el-option>
             </el-select>
-            <el-select v-model="entry.type" placeholder="设备类型" clearable>
+            <el-select v-model="entry.type" placeholder="设备状态" clearable>
               <el-option
                 v-for="item in types"
                 :key="item.value"
@@ -88,9 +100,8 @@
           >
             <el-table-column type="selection" width="55" v-if="batch">
             </el-table-column>
-            <el-table-column prop="type" label="设备类型"> </el-table-column>
-            <el-table-column prop="id" label="设备编号"> </el-table-column>
-            <el-table-column prop="model" label="设备型号"> </el-table-column>
+            <el-table-column prop="id" label="摄像头编号"> </el-table-column>
+            <el-table-column prop="model" label="型号"> </el-table-column>
             <el-table-column prop="float" label="隶属浮体"> </el-table-column>
             <el-table-column prop="position" label="安装位置">
             </el-table-column>
@@ -257,7 +268,7 @@
                 </div>
               </div>
               <div class="column">
-                <div class="title">设备类型</div>
+                <div class="title">摄像头分布</div>
                 <div class="colChart"><bar-normal></bar-normal></div>
               </div></div
           ></dv-border-box-7>
@@ -273,11 +284,15 @@
 <script>
 import Echarts from "@/components/Charts/Echarts.vue";
 import BarNormal from "@/components/Charts/BarNormal.vue";
+import EditDevice from "@/components/Dialogs/EditDevice.vue";
+import CheckMonitor from "@/components/Dialogs/CheckMonitor.vue";
 export default {
-  components: { Echarts, BarNormal },
-  name: "MonitorVc",
+  components: { Echarts, BarNormal, CheckMonitor, EditDevice },
+  name: "DeviceVc",
   data() {
     return {
+      isCheck: false,
+      isEdit: false,
       tableData: [
         {
           type: "逆变器",
@@ -495,6 +510,44 @@ export default {
       const { type, index } = obj;
       this.tableData[index].choosen = !this.tableData[index].choosen;
       console.log(type);
+      switch (type) {
+        case "delete":
+          this.deleteOne(index);
+          break;
+        case "check":
+          this.check(index);
+          break;
+        case "edit":
+          this.edit(index);
+          break;
+        case "export":
+          this.exportOne(index);
+          break;
+        case "change":
+          this.changeOne(index);
+          break;
+      }
+    },
+    check() {
+      this.isCheck = true;
+    },
+    closeCheck() {
+      this.isCheck = false;
+    },
+    edit() {
+      this.isEdit = true;
+    },
+    closeEdit() {
+      this.isEdit = false;
+    },
+    deleteOne(index) {
+      console.log(index);
+    },
+    exportOne(index) {
+      console.log(index);
+    },
+    changeOne(index) {
+      console.log(index);
     },
     deleteBatch() {},
     exportBatch() {},
@@ -522,7 +575,7 @@ export default {
     display: flex;
     justify-content: space-between;
     .left {
-      width: 76.5%;
+      width: 72%;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -835,7 +888,7 @@ export default {
       }
     }
     .right {
-      width: 22.5%;
+      width: 27%;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -978,7 +1031,7 @@ export default {
                     .row {
                       height: 20%;
                       width: 100%;
-                      margin-top: 10%;
+                      margin-top: 5%;
                       display: flex;
                       align-items: center;
                       .color {
@@ -995,6 +1048,10 @@ export default {
                 flex: 1;
                 width: 100%;
               }
+            }
+
+            .pie {
+              height: 34%;
             }
           }
         }

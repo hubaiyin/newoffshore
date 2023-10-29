@@ -293,7 +293,7 @@ export default {
   data() {
     return {
       isCheck: false,
-      isEdit: true,
+      isEdit: false,
       tableData: [
         {
           type: "逆变器",
@@ -576,7 +576,7 @@ export default {
     display: flex;
     justify-content: space-between;
     .left {
-      width: 76.5%;
+      width: 72%;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -889,7 +889,7 @@ export default {
       }
     }
     .right {
-      width: 22.5%;
+      width: 27%;
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -1032,7 +1032,7 @@ export default {
                     .row {
                       height: 20%;
                       width: 100%;
-                      margin-top: 10%;
+                      margin-top: 5%;
                       display: flex;
                       align-items: center;
                       .color {
@@ -1049,6 +1049,10 @@ export default {
                 flex: 1;
                 width: 100%;
               }
+            }
+
+            .pie {
+              height: 34%;
             }
           }
         }

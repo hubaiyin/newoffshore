@@ -19,7 +19,7 @@ export default {
           },
           axisLabel: {
             color: "#fff",
-            fontSize: 15,
+            fontSize: 14,
           },
         },
         xAxis: {
@@ -45,9 +45,9 @@ export default {
         grid: {
           // 让图表占满容器
           top: "8%",
-          left: "5%",
-          right: "3%",
-          bottom: "6%",
+          left: "11%",
+          right: "10%",
+          bottom: "10%",
         },
 
         series: [
@@ -62,7 +62,7 @@ export default {
             yAxisIndex: 0,
             type: "bar",
             barWidth: "40%",
-            data: [10, 50, 30, 40, 60],
+            data: [1110, 50, 30, 40, 60],
             itemStyle: {
               color: new echarts.graphic.LinearGradient(
                 0,
