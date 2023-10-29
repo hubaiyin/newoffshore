@@ -3,7 +3,7 @@
     title="编辑"
     :modal-append-to-body="false"
     :visible="dialogVisible"
-    :before-close="close"
+    :before-close="cancel"
     width="46%"
   >
     <div class="content" ref="content" :style="{ height: height + 'px' }">
@@ -116,7 +116,18 @@
           <div class="row" :style="{ height: imgWidth * 2 + 'px' }">
             <strong>设备图片</strong>
             <el-upload
+              ref="upload"
               action="#"
+              :on-change="
+                (file, fileList) => {
+                  handleChange(file, fileList);
+                }
+              "
+              :on-remove="
+                (file, fileList) => {
+                  removeImg(file, fileList);
+                }
+              "
               list-type="picture-card"
               :auto-upload="false"
               :multiple="false"
@@ -165,8 +176,8 @@
         </div>
       </div>
       <div class="button">
-        <el-button>取消</el-button>
-        <el-button type="warning">确定</el-button>
+        <el-button @click="cancel">取消</el-button>
+        <el-button type="warning" @click="confirm">确定</el-button>
       </div>
     </div>
   </el-dialog>
@@ -193,6 +204,8 @@ export default {
       dialogImageUrl: "",
       dialog: false,
       disabled: false,
+      ul: null,
+      hideUploadEdit: null,
     };
   },
   methods: {
@@ -217,12 +230,40 @@ export default {
       }
       return isJPG && isLt2M;
     },
+    handleChange(file, filelist) {
+      // 大于1张隐藏
+      (this.hideUploadEdit.style.display =
+        filelist.length >= 1 ? "none" : "flex") &&
+        (this.ul.style.display = filelist.length >= 1 ? "inline" : "none");
+      console.log(this.ul.style.display);
+    },
+    // el-upload删除方法
+    removeImg(file, filelist) {
+      // 大于1张隐藏
+      (this.hideUploadEdit.style.display =
+        filelist.length >= 1 ? "none" : "flex") &&
+        (this.ul.style.display = filelist.length >= 1 ? "inline" : "none");
+      console.log(this.ul.style);
+    },
+    cancel() {
+      console.log("取消");
+
+      this.$emit("close");
+    },
+    confirm() {
+      console.log("关闭");
+      this.$emit("close");
+    },
   },
   mounted() {
     // console.log(this.index);
     this.$nextTick(() => {
       this.height = this.$refs.content.clientWidth * 0.6;
       this.imgWidth = (this.height * 0.85 - this.height * 0.85 * 0.06) * 0.166;
+      this.ul = document.querySelector(".el-upload-list");
+      this.ul.style.display = "none";
+      this.hideUploadEdit = document.querySelector(".el-upload--picture-card");
+      console.log(this.hideUploadEdit.style);
     });
   },
 };
@@ -249,6 +290,14 @@ export default {
 }
 ::v-deep .el-dialog__body {
   padding: 10px 0px 30px;
+}
+::v-deep .el-upload-list--picture-card {
+  height: 100%;
+  width: 100%;
+}
+::v-deep .el-upload-list--picture-card .el-upload-list__item {
+  width: 100%;
+  height: 100%;
 }
 .content {
   width: 100%;
