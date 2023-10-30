@@ -1,70 +1,56 @@
 <template>
   <el-dialog
-    title="查看"
+    title="U2-ZFG-1 摄像头"
     :modal-append-to-body="false"
     :visible="dialogVisible"
     :before-close="close"
-    width="60%"
+    width="80%"
   >
     <div class="content" ref="content" :style="{ height: height + 'px' }">
       <div class="left">
-        <div class="title">设备信息</div>
+        <div class="title">实时画面</div>
         <div class="context">
-          <div class="leftText">
-            <div class="row">
-              <strong>设备类型</strong>&nbsp;&nbsp;&nbsp;&nbsp;逆变器
-            </div>
-            <div class="row">
-              <strong>设备编号</strong>&nbsp;&nbsp;&nbsp;&nbsp;#A23901
-            </div>
-            <div class="row">
-              <strong>设备型号</strong>&nbsp;&nbsp;&nbsp;&nbsp;A型
-            </div>
-            <div class="row">
-              <strong>隶属浮体</strong>&nbsp;&nbsp;&nbsp;&nbsp;U1
-            </div>
-            <div class="row">
-              <strong>安装位置</strong>&nbsp;&nbsp;&nbsp;&nbsp;ZFG-1
-            </div>
-            <div class="row">
-              <strong>采集时长</strong>&nbsp;&nbsp;&nbsp;&nbsp;114514分钟
-            </div>
-            <div class="row">
-              <strong>安装日期</strong>&nbsp;&nbsp;&nbsp;&nbsp;2023-09-17
-            </div>
-          </div>
-          <div class="line"></div>
-          <div class="rightText">
-            <div class="row">
-              <strong>设备状态</strong>&nbsp;&nbsp;&nbsp;&nbsp;逆变器
-            </div>
-            <div class="row">
-              <strong>状态发生时间</strong>&nbsp;&nbsp;&nbsp;&nbsp;2023-09-21
-              12:18:26
-            </div>
-            <div class="row">
-              <strong>状态持续时间</strong>&nbsp;&nbsp;&nbsp;&nbsp;112分钟
-            </div>
-            <div class="row"></div>
-            <div class="row">
-              <strong>设备工作电压</strong>&nbsp;&nbsp;&nbsp;&nbsp;220V
-            </div>
-            <div class="row">
-              <strong>内部温度</strong>&nbsp;&nbsp;&nbsp;&nbsp;65℃
-            </div>
-            <div class="row">
-              <strong>内部湿度</strong>&nbsp;&nbsp;&nbsp;&nbsp;45%
-            </div>
-          </div>
+          <video
+            controls
+            src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+          ></video>
         </div>
       </div>
       <div class="right">
-        <div class="title">设备图片</div>
+        <div class="title">摄像头信息</div>
         <div class="context">
-          <div class="img">
-            <img src="../../assets/image/background.png" />
+          <div class="inform">
+            <div class="row">
+              <div class="name">摄像头编号</div>
+              <div class="value">#A23101</div>
+            </div>
+            <div class="row">
+              <div class="name">型号</div>
+              <div class="value">A型</div>
+            </div>
+            <div class="row">
+              <div class="name">隶属浮体</div>
+              <div class="value">U2</div>
+            </div>
+            <div class="row">
+              <div class="name">安装位置</div>
+              <div class="value">ZFG-1</div>
+            </div>
+            <div class="row">
+              <div class="name">安装日期</div>
+              <div class="value">2023-9-21</div>
+            </div>
+            <div class="row">
+              <div class="name">采集时长</div>
+              <div class="value">114514分钟</div>
+            </div>
+            <div class="row">
+              <div class="name">设备状态</div>
+              <div class="value">在线</div>
+            </div>
           </div>
           <div class="button">
+            <el-button type="primary">查看回放</el-button>
             <el-button type="warning" @click="close">确定</el-button>
           </div>
         </div>
@@ -99,7 +85,7 @@ export default {
   mounted() {
     // console.log(this.index);
     this.$nextTick(() => {
-      this.height = this.$refs.content.clientWidth * 0.35;
+      this.height = this.$refs.content.clientWidth * 0.4;
     });
   },
 };
@@ -133,58 +119,32 @@ export default {
   display: flex;
   justify-content: space-between;
   .left {
-    width: 56%;
+    width: 66.5%;
     height: 100%;
     display: flex;
     flex-direction: column;
     .title {
-      font-size: calc(24px + 0.1vw);
+      font-size: calc(36px + 0.2vw);
       color: #fff;
       font-weight: bold;
     }
     .context {
-      flex: 1;
-      background: #b7c2fa;
+      // flex: 1;
       display: flex;
       justify-content: space-between;
-      padding: 2% 1.5%;
-      box-sizing: border-box;
-      .line {
+      video {
+        width: 100%;
         height: 100%;
-        width: 3px;
-        background: #7986bd;
-      }
-      .leftText {
-        color: #414f85;
-        height: 100%;
-        width: 40%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        font-size: calc(16px + 0.1vw);
-        padding-left: 3%;
-        box-sizing: border-box;
-      }
-      .rightText {
-        color: #414f85;
-        width: 55%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding-left: 3%;
-        font-size: calc(16px + 0.1vw);
-        box-sizing: border-box;
       }
     }
   }
   .right {
-    width: 42.5%;
+    width: 32%;
     height: 100%;
     display: flex;
     flex-direction: column;
     .title {
-      font-size: calc(24px + 0.1vw);
+      font-size: calc(36px + 0.2vw);
       color: #fff;
       font-weight: bold;
     }
@@ -195,34 +155,60 @@ export default {
       justify-content: space-between;
       box-sizing: border-box;
       color: #414f85;
-      .img {
+      .inform {
+        background: #b7c2fa;
         width: 100%;
-        height: 80%;
-        img {
-          height: 100%;
+        height: 84%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1.5% 8%;
+        .row {
+          flex: 1;
           width: 100%;
+          display: flex;
+          .name,
+          .value {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            font-size: calc(28px + 0.1vw);
+          }
+          .name {
+            width: 45%;
+            font-weight: bold;
+          }
+          .value {
+            width: 50%;
+          }
         }
       }
       .button {
         width: 100%;
-        height: 100%;
+        height: 16%;
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: flex-end;
         ::v-deep .el-button {
           padding: 0 0 !important;
           line-height: 0;
         }
-        .el-button--warning {
-          height: 65%;
+        .el-button--warning,
+        .el-button--primary {
+          height: 64%;
           width: 45%;
-          font-size: calc(18px + 0.1vw);
+          font-size: calc(22px + 0.1vw);
           cursor: pointer;
         }
 
         .el-button--warning {
           color: #725219;
           background: #f4bc41;
+        }
+        .el-button--primary {
+          color: #fff;
+          background: #387ff7;
         }
       }
     }
