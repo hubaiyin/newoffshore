@@ -6,12 +6,17 @@
       v-if="isCheck"
       @close="closeCheck"
     ></check-monitor>
-    <edit-device
+    <edit-monitor
       :dialogVisible="isEdit"
       :index="index"
       v-if="isEdit"
       @close="closeEdit"
-    ></edit-device>
+    ></edit-monitor>
+    <create-monitor
+      :dialogVisible="isCreate"
+      v-if="isCreate"
+      @close="closeCreate"
+    ></create-monitor>
     <div class="main">
       <div class="left">
         <div class="header">
@@ -36,51 +41,56 @@
             <div class="small"></div>
           </div>
           <div class="bottom">
-            <div class="input">
-              <el-input
-                placeholder="请输入内容"
-                v-model="entry.input"
-                style="heigth: 100%"
+            <div class="in">
+              <div class="input">
+                <el-input
+                  placeholder="请输入内容"
+                  v-model="entry.input"
+                  style="heigth: 100%"
+                >
+                  <i slot="suffix" class="el-input__icon el-icon-search"></i>
+                </el-input>
+              </div>
+              <el-select v-model="entry.float" placeholder="隶属浮体" clearable>
+                <el-option
+                  v-for="item in floats"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                ></el-option>
+              </el-select>
+              <el-select
+                v-model="entry.position"
+                placeholder="安装位置"
+                clearable
               >
-                <i slot="suffix" class="el-input__icon el-icon-search"></i>
-              </el-input>
+                <el-option
+                  v-for="item in positions"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                >
+                </el-option>
+              </el-select>
+              <el-select v-model="entry.type" placeholder="设备状态" clearable>
+                <el-option
+                  v-for="item in types"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                >
+                </el-option>
+              </el-select>
             </div>
-            <el-select v-model="entry.float" placeholder="隶属浮体" clearable>
-              <el-option
-                v-for="item in floats"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
-            </el-select>
-            <el-select
-              v-model="entry.position"
-              placeholder="安装位置"
-              clearable
-            >
-              <el-option
-                v-for="item in positions"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
+            <div class="button">
+              <el-button type="primary" @click="create">新建</el-button>
+              <el-button v-show="!batch" type="warning" @click="batch = true"
+                >批量操作</el-button
               >
-              </el-option>
-            </el-select>
-            <el-select v-model="entry.type" placeholder="设备状态" clearable>
-              <el-option
-                v-for="item in types"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
+              <el-button v-show="batch" type="info" @click="batch = false"
+                >取消</el-button
               >
-              </el-option>
-            </el-select>
-            <el-button v-show="!batch" type="warning" @click="batch = true"
-              >批量操作</el-button
-            >
-            <el-button v-show="batch" type="info" @click="batch = false"
-              >取消</el-button
-            >
+            </div>
           </div>
         </div>
         <div class="form" ref="form">
@@ -284,15 +294,17 @@
 <script>
 import Echarts from "@/components/Charts/Echarts.vue";
 import BarNormal from "@/components/Charts/BarNormal.vue";
-import EditDevice from "@/components/Dialogs/EditDevice.vue";
 import CheckMonitor from "@/components/Dialogs/CheckMonitor.vue";
+import EditMonitor from "@/components/Dialogs/EditMonitor.vue";
+import CreateMonitor from "@/components/Dialogs/CreateMonitor.vue";
 export default {
-  components: { Echarts, BarNormal, CheckMonitor, EditDevice },
+  components: { Echarts, BarNormal, CheckMonitor, EditMonitor, CreateMonitor },
   name: "DeviceVc",
   data() {
     return {
       isCheck: false,
       isEdit: false,
+      isCreate: false,
       tableData: [
         {
           type: "逆变器",
@@ -540,6 +552,12 @@ export default {
     closeEdit() {
       this.isEdit = false;
     },
+    create() {
+      this.isCreate = true;
+    },
+    closeCreate() {
+      this.isCreate = false;
+    },
     deleteOne(index) {
       console.log(index);
     },
@@ -666,7 +684,7 @@ export default {
           display: flex;
           justify-content: space-between;
           .input {
-            width: 40%;
+            width: 46%;
             height: 85%;
 
             ::v-deep .el-input {
@@ -699,11 +717,26 @@ export default {
             line-height: 0;
           }
 
+          .in {
+            width: 72%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+          }
+
+          .button {
+            height: 100%;
+            width: 25%;
+            display: flex;
+            justify-content: space-between;
+          }
+
           .el-button--info,
-          .el-button--warning {
+          .el-button--warning,
+          .el-button--primary {
             height: 85%;
-            width: 11%;
-            font-size: calc(18px + 0.1vw);
+            width: 48%;
+            font-size: calc(17px + 0.1vw);
             cursor: pointer;
           }
 
@@ -716,6 +749,10 @@ export default {
             color: #5f5f5f;
           }
 
+          .el-button--primary {
+            color: #000;
+          }
+
           ::v-deep .el-select .el-input .el-select__caret {
             color: #c0c4cc;
             font-size: calc(22px + 0.1vw);
@@ -725,7 +762,7 @@ export default {
           }
 
           ::v-deep .el-select {
-            width: 15%;
+            width: 17%;
           }
 
           ::v-deep .el-select > .el-input {
