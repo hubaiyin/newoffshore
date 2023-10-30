@@ -51,6 +51,7 @@
           </div>
           <div class="button">
             <el-button type="primary">查看回放</el-button>
+
             <el-button type="warning" @click="close">确定</el-button>
           </div>
         </div>
