@@ -17,7 +17,15 @@
         </div>
         <div class="box1">
           <div class="bottom">
-            <el-select v-model="entry.float" placeholder="设备类型" clearable>
+            <el-select v-model="entry.float" placeholder="设备类型" clearable v-if="tabPosition === 'left'">
+              <el-option
+                v-for="item in floats"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              ></el-option>
+            </el-select>
+            <el-select v-model="entry.float" placeholder="数据名称" clearable v-if="tabPosition !== 'left'">
               <el-option
                 v-for="item in floats"
                 :key="item.value"
@@ -38,7 +46,7 @@
               >
               </el-option>
             </el-select>
-            <el-select v-model="entry.type" placeholder="预警等级" clearable>
+            <el-select v-model="entry.type" placeholder="预警条目" clearable>
               <el-option
                 v-for="item in types"
                 :key="item.value"
@@ -49,9 +57,6 @@
             </el-select>
             <el-date-picker v-model="value1" type="date" placeholder="预警时间">
             </el-date-picker>
-            <el-button type="primary" icon="el-icon-refresh-right"
-              >刷新</el-button
-            >
           </div>
           <el-radio-group v-model="tabPosition" style="margin-bottom: 30px">
             <el-radio-button label="left">设备数据</el-radio-button>
