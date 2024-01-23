@@ -63,7 +63,26 @@ const router = new VueRouter({
                 },
                 {
                     path: '/before/warn',
-                    component: () => import('../views/WarnVc/WarnVc.vue')
+                    component: () => import('../views/WarnVc/WarnVc.vue'),
+                    redirect: '/before/warn/equipmentwarn',
+                    children:[
+                        {
+                            path:'/before/warn/datawarn',
+                            component:()=>import('../views/WarnVc/DataWarn/DataWarn.vue')
+                        },
+                        {
+                            path:'/before/warn/equipmentwarn',
+                            component:()=>import('../views/WarnVc/EquipmentWarn/EquipmentWarn.vue')
+                        },
+                        {
+                            path:'/before/warn/historywarn',
+                            component:()=>import('../views/WarnVc/HistoryWarn/HistoryWarn.vue')
+                        },
+                        {
+                            path:'/before/warn/thresholdwarn',
+                            component:()=>import('../views/WarnVc/ThresholdSetting/ThresholdSetting.vue')
+                        },
+                    ]
                 }
             ]
         }
