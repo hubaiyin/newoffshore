@@ -64,6 +64,7 @@ const router = new VueRouter({
                 {
                     path: '/before/warn',
                     component: () => import('../views/WarnVc/WarnVc.vue'),
+                    redirect: '/before/warn/equipmentwarn',
                     children:[
                         {
                             path:'/before/warn/datawarn',

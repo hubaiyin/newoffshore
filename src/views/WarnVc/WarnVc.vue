@@ -5,13 +5,13 @@
         <div class="data">
           <el-radio-group v-model="tabPosition" size="medium" fill="#4165db">
             <el-radio-button
-              label="/before/warn/datawarn"
-              @click.native="jump($event, '/before/warn/datawarn')"
+              label="/before/warn/equipmentwarn"
+              @click.native="jump($event, '/before/warn/equipmentwarn')"
               ><i class="el-icon-monitor"></i>设备预警</el-radio-button
             >
             <el-radio-button
-              label="/before/warn/equipmentwarn"
-              @click.native="jump($event, '/before/warn/equipmentwarn')"
+              label="/before/warn/datawarn"
+              @click.native="jump($event, '/before/warn/datawarn')"
               ><i class="el-icon-s-data"></i>数据预警</el-radio-button
             >
             <el-radio-button
@@ -105,6 +105,6 @@ export default {
   color: #fff;
 }
 .showWay{
-  width: 95%;
+  height: 95%;
 }
 </style>
