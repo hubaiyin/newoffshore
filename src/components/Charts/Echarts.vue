@@ -19,6 +19,29 @@ export default {
   },
   mounted() {
     this.chart = echarts.init(this.$refs.chart);
+
+    this.chart.getZr().on("click", (params) => {
+      if (!params.target) {
+        console.log(params);
+        this.renderChart();
+      }
+    });
+    this.chart.on("click", (params) => {
+      if (
+        params.componentType !== "series" &&
+        params.componentType !== "markPoint"
+      )
+        return;
+      const seriesCopy = JSON.parse(JSON.stringify(this.chartOption.series));
+      seriesCopy.map((item, index) => {
+        if (index === params.seriesIndex) return item;
+        else {
+          item.color = "rgba(128,128,128,0.4)";
+          return item;
+        }
+      });
+      this.chart.setOption({ series: seriesCopy });
+    });
     this.$nextTick(() => {
       this.renderChart();
     });

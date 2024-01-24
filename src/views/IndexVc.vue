@@ -173,6 +173,7 @@ export default {
         padding-left: 2%;
         .btnList {
           display: flex;
+          width: 100%;
           div {
             // background: #2446f0;
             background: #2142e7;
@@ -182,12 +183,13 @@ export default {
             box-shadow: 0px 5px 8px -3px rgb(106, 144, 235);
             padding: 10px 20px;
             display: inline-block;
-            font-size: 15px;
+            font-size: calc(12px + 0.4vh);
             font-weight: 600;
-            width: 65px;
+            width: 10%;
             text-transform: uppercase;
             cursor: pointer;
             transform: skew(-21deg);
+            text-align: center;
           }
 
           span {

@@ -186,9 +186,9 @@ import BorderBar from "@/components/Charts/BorderBar.vue";
 import BlueLine from "@/components/Charts/BlueLine.vue";
 import ProcessChart from "@/components/Charts/ProcessChart.vue";
 import SegmentedPie from "@/components/Charts/SegmentedPie.vue";
-/* import * as THREE from "three";
+import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"; */
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 export default {
   name: "HomeVc",
   components: { MapVc, BorderBar, BlueLine, ProcessChart, SegmentedPie },
@@ -205,6 +205,7 @@ export default {
       AMap: null,
       temperature: 0,
       weatherString: "",
+      model: null,
     };
   },
   methods: {
@@ -215,7 +216,7 @@ export default {
         this.weatherString = data.weather;
       });
     },
-    /* animate() {
+    animate() {
       requestAnimationFrame(this.animate);
       this.controls.update();
       this.renderer.render(this.scene, this.camera);
@@ -247,7 +248,7 @@ export default {
       this.renderer.setSize(this.dom.clientWidth, this.dom.clientHeight);
       // this.renderer.setClearColor(0x3f3f3f, 1);
       this.dom.appendChild(this.renderer.domElement);
-    }, */
+    },
   },
   async mounted() {
     this.pieHeight = this.$refs.main.clientWidth * 0.33;
@@ -268,23 +269,28 @@ export default {
       this.getWeather();
     });
 
-    // this.dom = this.$refs.model;
-    // this.createCamera();
-    // this.scene = new THREE.Scene();
-    // this.loader = new GLTFLoader();
-    // this.loader.load(
-    //   "./models/gltf/AAA浮体与监测最终装配.gltf",
-    //   ({ scene: { children } }) => {
-    //     console.log(...children);
-    //     this.scene.add(...children);
-    //   }
-    // );
-    // const axesHelper = new THREE.AxesHelper(5);
-    // this.scene.add(axesHelper);
-    // this.createLight();
-    // this.createRenderer();
-    // this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-    // this.animate();
+    this.dom = this.$refs.model;
+    this.createCamera();
+    this.scene = new THREE.Scene();
+    this.loader = new GLTFLoader();
+    this.loader.load(
+      "./models/gltf/AAA浮体与监测最终装配.gltf",
+      ({ scene: { children } }) => {
+        // console.log("@", children);
+        [this.model] = children;
+        console.log(this.model);
+        this.scene.add(this.model);
+      }
+    );
+    const axesHelper = new THREE.AxesHelper(5);
+    this.scene.add(axesHelper);
+    this.createLight();
+    this.createRenderer();
+    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+    this.animate();
+  },
+  beforeDestroy() {
+    this.scene.remove(this.model);
   },
 };
 </script>
